@@ -1,0 +1,75 @@
+package unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import phamThiKimHien.Point;
+import phamThiKimHien.Rectangle;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 08/21/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcDistance() method of Distance() class
+ */
+public class TestRectangle {
+	phamThiKimHien.Rectangle rec;
+	@Test
+	public void testCalcPerimeter1() {
+		rec = new Rectangle();		
+		double ex = 4;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(1, 1));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter2() {
+		rec = new Rectangle();		
+		double ex = 0;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(0, 0));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter3() {
+		rec = new Rectangle();		
+		double ex = 12.324;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(2, 3));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter4() {
+		rec = new Rectangle();		
+		double ex = 6.472;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(3,1));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter5() {
+		rec = new Rectangle();		
+		double ex = 5;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(1,1));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter6() {
+		rec = new Rectangle();		
+		double ex = 8.772;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(1,2));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter7() {
+		rec = new Rectangle();		
+		double ex = 12.424;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(2,3));
+		assertEquals(ex, ac, 0.1);
+	}
+	@Test
+	public void testCalcPerimeter8() {
+		rec = new Rectangle();		
+		double ex = 8.672;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(3,2));
+		assertEquals(ex, ac, 0.1);
+	}
+
+}

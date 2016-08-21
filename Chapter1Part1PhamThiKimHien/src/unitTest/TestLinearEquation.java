@@ -8,6 +8,9 @@ import phamThiKimHien.LinearEquation;
 
 public class TestLinearEquation {
 
+	// unit test for LinearEquation class
+	// input is object of LinearEquation class, and use LinearEquation() method
+	// output is True use assertTrue / assertFalse
 	@Test
 	public void test1() {
 		phamThiKimHien.LinearEquation le = new LinearEquation(1, -1);

@@ -1,9 +1,16 @@
 package phamThiKimHien;
 
+/*
+ * Author: Pham Thi Kim Hien
+ * Date : 8/18/2016
+ * Vesion: 1.0
+ * 
+ */
+
 public class LinearEquation {
 
-	private int a;
-	private int b;
+	protected int a;
+	protected int b;
 	public LinearEquation(int a, int b) {
 		this.a = a;
 		this.b = b;

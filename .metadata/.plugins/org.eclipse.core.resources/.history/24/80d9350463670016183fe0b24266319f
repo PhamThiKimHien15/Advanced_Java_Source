@@ -1,0 +1,26 @@
+package unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import phamThiKimHien.Point;
+import phamThiKimHien.Rectangle;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 08/21/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcDistance() method of Distance() class
+ */
+public class TestRectangle {
+	phamThiKimHien.Rectangle rec;
+	@Test
+	public void test() {
+		rec = new Rectangle();		
+		double ex = 1;
+		double ac = rec.calcPerimeter(new Point(0, 0), new Point(1, 1));
+		assertEquals(ex, ac, 0.001);
+	}
+
+}

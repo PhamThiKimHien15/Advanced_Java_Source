@@ -1,0 +1,19 @@
+package phamThiKimHien;
+
+public class Circle {
+
+	final double PI = 3.14;
+	Distance dis = new Distance();
+	// calculate about Perimeter of a circle
+	// input is 2 object depend on Point class
+	// output is result Perimeter of a circle
+	public double calculatePerimeter(Point PointO, Point PointR) {
+		return dis.calcDistance(PointO, PointR)*2*PI;
+	}
+	// calculate about area of a circle
+	// input is 2 object depend on Point class
+	// output is result area of a circle
+	public double calculateArea(Point PointO, Point PointR) {
+		return Math.pow(dis.calcDistance(PointO, PointR),2)*PI;
+	}
+}

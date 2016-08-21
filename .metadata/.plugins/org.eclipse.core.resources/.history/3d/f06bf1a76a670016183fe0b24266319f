@@ -1,0 +1,25 @@
+package unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import phamThiKimHien.Staff;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 19/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calculatePerimeter() method and calculateArea() method of Circle class
+ */
+public class TestEmployee {
+	phamThiKimHien.Staff st;
+	// input is object of Staff class, and use calculatePerimeter() method
+	// output is True/False use assertTrue / assertFalse
+	@Test
+	public void test() {
+		st = new Staff(name, ceoSalary, numOfPeople, subsidize)
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,27 @@
+package phamThiKimHien;
+
+import java.util.ArrayList;
+
+public class CollectionCDs {
+	private ArrayList<CD> list = new ArrayList<CD>();
+
+	public CollectionCDs(ArrayList<CD> cd) {
+		super();
+		this.list = cd;
+	}
+	
+	public CollectionCDs() {
+		super();
+	}
+
+	public void addCD(CD cd) {
+		list.add(cd);
+	}
+	public double calcTotalMoneyOfAllCDs() {
+		double totalMoney = 0;
+		for (int i = 0; i < list.size(); i++) {
+			totalMoney += list.get(i).price;
+		}
+		return totalMoney;
+	}
+}

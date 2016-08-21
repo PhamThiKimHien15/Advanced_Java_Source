@@ -1,0 +1,32 @@
+package phamThiKimHien;
+
+import java.util.ArrayList;
+
+public class CollectionCDs {
+	private ArrayList<CD> list;
+
+	public CollectionCDs() {
+		super();
+		this.list = new ArrayList<CD>();
+	}
+
+	public void addCD(CD cd) {
+		list.add(cd);
+	}
+	public double calcTotalMoneyOfAllCDs() {
+		double totalMoney = 0;
+		for (int i = 0; i < list.size(); i++) {
+			totalMoney += list.get(i).price;
+		}
+		return totalMoney;
+	}
+	
+	public void outList() {
+		for(int i=0; i< list.size(); i++){
+			System.out.println("CD code: " +list.get(i).id + "\tName of CD: " + list.get(i).name + "\tName of singer: " + list.get(i).singer + "\tNumber of Songs: " + list.get(i).numOfSongs + "\tPrice: " + list.get(i).price);
+		}
+		System.out.print("\tTotal Money: " + calcTotalMoneyOfAllCDs());
+		
+	}
+	
+}

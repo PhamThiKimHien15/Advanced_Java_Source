@@ -1,0 +1,35 @@
+package phamThiKimHien;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 19/08/2016
+ * Version: 1.0
+ * 
+ * Main: Employee class
+ */
+public class TestingEmployee {
+
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		try {
+			System.out.println("enter full name of the employee: ");
+			String name = input.readLine();
+			System.out.println("Enter the employee's salary coefficient ");
+			double ceoSalary = Double.parseDouble(input.readLine());
+			System.out.println("Enter the number of family allowances: ");
+			int numOfPeople = Integer.parseInt(input.readLine());
+			System.out.println("Enter subsidies: ");
+			double subsidize = Double.parseDouble(input.readLine());
+			Employee st = new Employee(name, ceoSalary, numOfPeople, subsidize);
+			System.out.println("The Income: " + String.format("%.2f", st.calcOfIncome()));
+			System.out.println("The Income Tax: " + String.format("%.2f", st.calcOfTaxIncome()));
+			System.out.println("The TNCN Tax: " + String.format("%.2f", st.calcTaxTNCN()));
+			System.out.println("Real wage: " + String.format("%.2f", st.calcRealSalary()));
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}

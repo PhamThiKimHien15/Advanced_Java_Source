@@ -1,0 +1,26 @@
+package unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import phamThiKimHien.Point;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 19/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calculatePerimeter() method and calculateArea() method of Circle class
+ */
+public class TestCircle {
+	phamThiKimHien.Circle cir;
+	Point pointA;
+	Point pointB;
+	// input is object of Circle class, and use calculatePerimeter() method
+	// output is True use assertTrue / assertFalse
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
