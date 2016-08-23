@@ -1,0 +1,29 @@
+package Ex1_17;
+
+public class Tiger extends Animal implements IBurrow, INonMoult, IRun, ISwim {
+
+	public Tiger(String name, String food) {
+		super(name, food);
+	}
+
+	@Override
+	public void swim() {
+		System.out.println("swim");
+	}
+
+	@Override
+	public void run() {
+		System.out.println("run");
+	}
+
+	@Override
+	public void grownNormal() {
+		System.out.println("grown normal");
+	}
+
+	@Override
+	public void toBurrow() {
+		System.out.println("burrow");
+	}
+
+}

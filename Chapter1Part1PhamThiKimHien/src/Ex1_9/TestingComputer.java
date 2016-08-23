@@ -3,7 +3,12 @@ package Ex1_9;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ */
 public class TestingComputer {
 
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -51,6 +56,7 @@ public class TestingComputer {
 			System.err.println(e.getMessage());
 		}
 	}
+	// get information of Desktop
 	public static void enterInfo() throws NumberFormatException, IOException {
 		System.out.print("Enter id: \n");
 		id = input.readLine();

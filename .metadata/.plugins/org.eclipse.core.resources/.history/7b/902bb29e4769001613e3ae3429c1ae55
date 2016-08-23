@@ -1,0 +1,6 @@
+package Ex1_16;
+
+public interface Speed {
+
+	double calcSpeed();
+}

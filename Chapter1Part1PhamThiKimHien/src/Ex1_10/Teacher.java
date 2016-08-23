@@ -1,5 +1,11 @@
 package Ex1_10;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Teacher
+ */
 public class Teacher extends Human {
 
 	private String homeroomClass;
@@ -31,6 +37,11 @@ public class Teacher extends Human {
 	public void setAllowance(double allowance) {
 		this.allowance = allowance;
 	}
+	/*
+	 * function: calculate salary
+	 * input is fields include ceoSalary, allowance
+	 * output is result of calculation
+	 */
 	public double calcSalary() {
 		return this.ceoSalary*BASICSALARY*this.allowance;
 	}

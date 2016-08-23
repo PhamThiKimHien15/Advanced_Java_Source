@@ -1,5 +1,11 @@
 package Ex1_11;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Currency Transaction
+ */
 public class CurrencyTransaction extends Transaction {
 
 	private String typeOfCurrency;
@@ -22,7 +28,11 @@ public class CurrencyTransaction extends Transaction {
 	public void setTypeOfCurrency(String typeOfCurrency) {
 		this.typeOfCurrency = typeOfCurrency;
 	}
-
+	/*
+	 * function: calculate buy transaction
+	 * input is fields include number, typeOfCurrency
+	 * output is result of the calculation
+	 */
 	public double calcBuy() {
 		if (this.typeOfCurrency.equalsIgnoreCase("USD"))
 			return getNumber() * this.USDBUY;
@@ -31,7 +41,11 @@ public class CurrencyTransaction extends Transaction {
 		else
 			return getNumber() * this.AUDBUY;
 	}
-
+	/*
+	 * function: calculate sell transaction
+	 * input is fields include number, typeOfCurrency
+	 * output is result of the calculation
+	 */
 	public double calcSell() {
 		if (this.typeOfCurrency.equalsIgnoreCase("USD"))
 			return getNumber() * this.USDSELL + getNumber() * this.USDSELL * 0.1;

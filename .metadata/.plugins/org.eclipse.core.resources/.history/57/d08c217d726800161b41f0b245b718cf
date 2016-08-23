@@ -1,0 +1,29 @@
+package Ex1_12;
+
+import java.util.GregorianCalendar;
+
+public class TextBook extends Book {
+
+	private String status;
+
+	public TextBook(String id, String name, GregorianCalendar days,
+			double price, int number, String pubHouse, String status) {
+		super(id, name, days, price, number, pubHouse);
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	public double calcTotalMoney() {
+		if (this.status.equalsIgnoreCase("new"))
+			return getNumber()*getPrice();
+		else
+			return getNumber()*getPrice()*0.5;
+	}
+}

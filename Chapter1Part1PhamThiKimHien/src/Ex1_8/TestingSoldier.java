@@ -3,7 +3,11 @@ package Ex1_8;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ */
 public class TestingSoldier {
 
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -43,7 +47,7 @@ public class TestingSoldier {
 			System.err.println(e.getMessage());
 		}
 	}
-
+	//get information of Soldier 
 	public static void enterInfo() throws NumberFormatException, IOException {
 		System.out.print("Enter name: \n");
 		name = input.readLine();

@@ -1,0 +1,26 @@
+package Ex1_15;
+
+public class StringedInstrument extends Instrument{
+
+	private double number;
+
+	public StringedInstrument(String name, String proUnit, double number) {
+		super(name, proUnit);
+		this.number = number;
+	}
+
+	public double getNumber() {
+		return number;
+	}
+
+	public void setNumber(double number) {
+		this.number = number;
+	}
+
+	@Override
+	public void play() {
+		System.out.println("\tPlay: " + getName() + " " + getNumber());
+	}
+	
+	
+}

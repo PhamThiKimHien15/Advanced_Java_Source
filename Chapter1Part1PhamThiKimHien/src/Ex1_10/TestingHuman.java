@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ */
 public class TestingHuman {
 
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -56,6 +61,7 @@ public class TestingHuman {
 			System.err.println(e.getMessage());
 		}
 	}
+	// get information of Human
 	public static void enterInfo() throws NumberFormatException, IOException {
 		System.out.print("Enter name: \n");
 		name = input.readLine();
@@ -67,6 +73,11 @@ public class TestingHuman {
 		phone = input.readLine();
 		checkNumberPhone(phone);
 	}
+	/*
+	 * function: check the phone numbers
+	 * input is phone field 
+	 * output is error if the phone number is entered incorrectly
+	 */	
 	public static void checkNumberPhone(String phone) {
 		Pattern pa = Pattern.compile("^[0-9]*$");
 		Matcher ma = pa.matcher(phone);

@@ -1,0 +1,29 @@
+package Ex1_12;
+
+import java.util.GregorianCalendar;
+
+public class ReferenceBook extends Book {
+
+	private int tax;
+
+	public ReferenceBook(String id, String name, GregorianCalendar days,
+			double price, int number, String pubHouse, int tax) {
+		super(id, name, days, price, number, pubHouse);
+		this.tax = tax;
+	}
+
+	public int getTax() {
+		return tax;
+	}
+
+	public void setTax(int tax) {
+		this.tax = tax;
+	}
+	public double calcMoney() {
+		return  (getNumber()*getPrice()) + (getNumber()*getPrice()* getTax());
+	}
+	@Override
+	public String toString() {
+		return super.toString() + "\tTax: " + getTax();
+	}
+}

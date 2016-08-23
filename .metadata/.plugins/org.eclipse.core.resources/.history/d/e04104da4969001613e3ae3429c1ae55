@@ -1,0 +1,27 @@
+package Ex1_17;
+
+import java.util.ArrayList;
+
+public class ListTiger {
+
+	ArrayList<Tiger> list;
+	
+	public ListTiger(){
+		this.list = new ArrayList<Tiger>();				
+	}
+	public void add(Tiger tiger){
+		list.add(tiger);
+	}
+	public void showInfo() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.print(list.get(i).toString() + "\tStatus include: ");
+			list.get(i).swim();
+			System.out.print(", ");
+			list.get(i).run();
+			System.out.print(", ");
+			list.get(i).grownNormal();
+			System.out.print(", ");
+			list.get(i).toBurrow();
+		}
+	}
+}

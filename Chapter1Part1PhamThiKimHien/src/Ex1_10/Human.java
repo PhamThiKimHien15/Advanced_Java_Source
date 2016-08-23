@@ -1,5 +1,11 @@
 package Ex1_10;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Human
+ */
 public class Human {
 
 	private String name;

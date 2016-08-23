@@ -1,5 +1,11 @@
 package Ex1_9;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Laptop
+ */
 public class Laptop extends Computer {
 
 	private int weight;

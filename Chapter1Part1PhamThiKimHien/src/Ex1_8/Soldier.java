@@ -5,7 +5,7 @@ package Ex1_8;
  * Date: 08/22/2016
  * Version: 1.0
  * 
- * construction fight() method
+ * Use To manage information of Trooper
  */
 public class Soldier {
 	private String name;
@@ -46,7 +46,7 @@ public class Soldier {
 	public void setWeapon(String weapon) {
 		this.weapon = weapon;
 	}
-
+	// Build fight() method
 	public void fight() {
 		if (this.power >= 0)
 			setPower(getPower() - 1);

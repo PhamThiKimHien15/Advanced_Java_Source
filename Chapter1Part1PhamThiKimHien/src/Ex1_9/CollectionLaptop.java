@@ -1,7 +1,13 @@
 package Ex1_9;
 
 import java.util.ArrayList;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * create list to manage information of Laptop
+ */
 public class CollectionLaptop {
 
 	ArrayList<Laptop> list;

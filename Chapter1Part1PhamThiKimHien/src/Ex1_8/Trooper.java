@@ -4,14 +4,14 @@ package Ex1_8;
  * Date: 08/22/2016
  * Version: 1.0
  * 
- * Extends Soldier and construction fight() method
+ * Use To manage information of Trooper
  */
 public class Trooper extends Soldier {
 
 	public Trooper(String name, int power, String weapon) {
 		super(name, power, weapon);
 	}
-
+	//Function: fight() method
 	public void fight() {
 		if (getPower() - 3 > 0)
 			setPower(getPower() - 3);

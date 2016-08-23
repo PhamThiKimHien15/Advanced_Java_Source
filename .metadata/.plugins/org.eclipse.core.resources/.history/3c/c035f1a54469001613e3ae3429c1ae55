@@ -1,0 +1,27 @@
+package Ex1_13;
+
+import java.util.ArrayList;
+
+public class ListBusinessEmployee {
+	ArrayList<BusinessEmployee> list;
+	
+	public ListBusinessEmployee(){
+		this.list = new ArrayList<BusinessEmployee>();
+	}
+	public void addBusEmployee(BusinessEmployee bus) {
+		list.add(bus);
+	}
+	public double calcAverSalary() {
+		double result = 0;
+		for (int i = 0; i < list.size(); i++) {
+			result += list.get(i).calcRealSalary();
+		}
+		return result/list.size();
+	}
+	public void showInfo() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString() + "\tBonuses: " + String.format("%.2f", list.get(i).calcBonuses()));
+		}
+		System.out.println("\tAverage Salary: " + String.format("%.2f", calcAverSalary()));
+	}
+}

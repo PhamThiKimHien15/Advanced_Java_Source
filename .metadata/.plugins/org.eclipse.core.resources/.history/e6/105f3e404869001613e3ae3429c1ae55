@@ -1,0 +1,20 @@
+package Ex1_16;
+
+import java.util.ArrayList;
+
+public class ListShip {
+
+	ArrayList<FuelConsumption> list;
+	
+	public ListShip(){
+		this.list = new ArrayList<FuelConsumption>();
+	}
+	public void add(FuelConsumption fuel) {
+		list.add(fuel);
+	}
+	public void showInfo() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString());
+		}
+	}
+}

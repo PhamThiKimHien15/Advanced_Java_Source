@@ -1,0 +1,25 @@
+package Ex1_17;
+
+import java.util.ArrayList;
+
+public class ListFish {
+
+	ArrayList<Fish> list;
+	
+	public ListFish(){
+		this.list = new ArrayList<Fish>();				
+	}
+	public void add(Fish fish){
+		list.add(fish);
+	}
+	public void showInfo() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.print(list.get(i).toString() + "\tStatus include: ");
+			list.get(i).swim();
+			System.out.print(", ");
+			list.get(i).liveUnderWater();
+			System.out.print(", ");
+			list.get(i).grownNormal();
+		}
+	}
+}

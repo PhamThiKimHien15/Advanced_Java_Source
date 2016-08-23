@@ -2,6 +2,13 @@ package Ex1_11;
 
 import java.util.ArrayList;
 
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * create list to manage information of Currency Transaction
+ */
 public class ListOfCurrTrans {
 	ArrayList<CurrencyTransaction> list;
 
@@ -13,6 +20,7 @@ public class ListOfCurrTrans {
 		list.add(cur);
 	}
 
+	// function: calculate average the amount of buy transaction
 	public double calcAverAmountBuy() {
 		double averAmountBuy = 0;
 		for (int i = 0; i < list.size(); i++) {
@@ -20,7 +28,8 @@ public class ListOfCurrTrans {
 		}
 		return averAmountBuy / list.size();
 	}
-	
+
+	// function: calculate average the amount of sell transaction
 	public double calcAverAmountSell() {
 		double averAmountSell = 0;
 		for (int i = 0; i < list.size(); i++) {
@@ -29,12 +38,15 @@ public class ListOfCurrTrans {
 		return averAmountSell / list.size();
 	}
 
+	// function: show information of Currency Transaction
 	public void showInfo() {
 		double totalNumber = 0;
 		for (int i = 0; i < list.size(); i++) {
 			totalNumber += list.get(i).getNumber();
 			System.out.println(list.get(i).toString());
 		}
-		System.out.println("\tTotal number: " + totalNumber + "\tAverage amount buy: " + calcAverAmountBuy() + "\tAverage amount sell: " + calcAverAmountSell());
+		System.out.println("\tTotal number: " + totalNumber
+				+ "\tAverage amount buy: " + calcAverAmountBuy()
+				+ "\tAverage amount sell: " + calcAverAmountSell());
 	}
 }

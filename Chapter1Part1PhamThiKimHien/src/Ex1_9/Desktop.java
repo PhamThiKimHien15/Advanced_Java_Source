@@ -1,5 +1,11 @@
 package Ex1_9;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Desktop
+ */
 public class Desktop extends Computer {
 
 	private String cPU;
@@ -25,9 +31,6 @@ public class Desktop extends Computer {
 	}
 	public void setRam(String ram) {
 		this.ram = ram;
-	}
-	public double calcMoney() {
-		return getNumber() * getPrice();
 	}
 
 }

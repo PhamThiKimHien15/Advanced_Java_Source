@@ -1,0 +1,28 @@
+package Ex1_12;
+
+import java.util.ArrayList;
+
+public class ListTextBook {
+	ArrayList<TextBook> list;
+	
+	public ListTextBook(){
+		this.list = new ArrayList<TextBook>();
+	}
+	
+	public void addTextBook(TextBook tex) {
+		list.add(tex);
+	}
+	public double calcTotalMoney() {
+		double totalMoney = 0;
+		for (int i = 0; i < list.size(); i++) {
+			totalMoney += list.get(i).calcMoney();
+		}
+		return totalMoney;
+	}
+	public void showInfo() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString());
+		}
+		System.out.println("\tTotal Money: " + calcTotalMoney());
+	}
+}

@@ -1,0 +1,6 @@
+package Ex1_17;
+
+public interface IBurrow {
+
+	void toBurrow();
+}

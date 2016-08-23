@@ -1,5 +1,12 @@
 package Ex1_9;
 
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Computer
+ */
 public class Computer {
 
 	protected  String id;
@@ -52,7 +59,11 @@ public class Computer {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-
+	/*
+	 * Function: calculate money
+	 * input is fields include number, price;
+	 * output is result of calculation
+	 */
 	public double calcMoney() {
 		return this.number * this.price;
 	}

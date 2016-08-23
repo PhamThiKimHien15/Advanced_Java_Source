@@ -1,0 +1,20 @@
+package Ex1_13;
+
+import java.util.ArrayList;
+
+public class ListBusinessEmployee {
+	ArrayList<BusinessEmployee> list;
+	
+	public ListBusinessEmployee(){
+		this.list = new ArrayList<BusinessEmployee>();
+	}
+	public void addBusEmployee(BusinessEmployee bus) {
+		list.add(bus);
+	}
+	
+	public void showInfo() {
+		for (int i = 0; i < list.size() ; i++) {
+			System.out.println(list.get(i).toString());
+		}
+	}
+}

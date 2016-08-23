@@ -98,7 +98,14 @@ public class Employee {
 	// input is result return of calcOfIncome() method and calcTaxTNCN() method
 	// output is result of actual salary for an employee
 	public double calcRealSalary() {
-		return calcOfIncome() - calcTaxTNCN();
+		return (calcOfIncome() - calcTaxTNCN());
 	}
-	
+	@Override
+	public String toString() {
+		return "\tName: " + getName() + "\tSalary coefficient: " + getCeoSalary() + "\tNumber of family allowances: " + getNumOfPeople() + "\tSubsidies: " + getSubsidize() + 
+				"\tThe Income: " + String.format("%.2f", calcOfIncome()) + 
+				"\tThe Income Tax: " + String.format("%.2f", calcOfTaxIncome()) + 
+				"\tThe TNCN Tax: " + String.format("%.2f", calcTaxTNCN())+ 
+				"\tReal wage: " + String.format("%.2f", calcRealSalary());
+	}
 }

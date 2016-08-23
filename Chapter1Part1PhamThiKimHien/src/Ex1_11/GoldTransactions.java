@@ -26,7 +26,11 @@ public class GoldTransactions extends Transaction {
 	public double getGOLDSJC() {
 		return GOLDSJC;
 	}
-
+	/*
+	 * function: calculate of the transaction
+	 * input is fields include: number, typeOfGold
+	 * output is result of the calculation
+	 */
 	public double calcTotalMoney() {
 		if(this.typeOfGold.equalsIgnoreCase("24k"))
 			return  getNumber() * GOLD24K;

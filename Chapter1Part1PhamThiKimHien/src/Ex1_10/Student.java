@@ -1,5 +1,11 @@
 package Ex1_10;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ * Use to manage information of Student
+ */
 public class Student extends Human{
 
 	private String stuclass;
@@ -36,7 +42,11 @@ public class Student extends Human{
 	public void sethK2(double hK2) {
 		this.hK2 = hK2;
 	}
-
+	/*
+	 * function: calculate Average scores
+	 * input is fields include hH1, hK2
+	 * output is result of calculation
+	 */	
 	public double calcAverage() {
 		return (this.hH1 + this.hK2)/2;
 	}

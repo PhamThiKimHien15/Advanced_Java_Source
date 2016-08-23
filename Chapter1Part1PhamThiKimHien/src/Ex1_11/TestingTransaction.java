@@ -3,10 +3,12 @@ package Ex1_11;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import Ex1_10.Student;
-import Ex1_10.Teacher;
-
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 22/08/2016
+ * Version: 1.0
+ * 
+ */
 public class TestingTransaction {
 
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -52,6 +54,7 @@ public class TestingTransaction {
 			System.err.println(e.getMessage());
 		}		
 	}
+	// get information of Transaction
 	public static void enterInfo() throws NumberFormatException, IOException {
 		System.out.print("Enter id: \n");
 		id = input.readLine();
