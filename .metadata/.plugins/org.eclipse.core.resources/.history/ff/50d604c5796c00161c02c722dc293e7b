@@ -1,0 +1,58 @@
+package Ex1_16.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_16.source.Car;
+import Ex1_16.source.Move;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 27/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcFuelCons() method and Area() method of Car class
+ */
+public class TestCar {
+	Ex1_16.source.Car car;
+	/*
+	 * input is  calcFuelCons() method
+ 	 * output is True / False use assertEquals
+	 */
+	@Test
+	public void testCalcFuelCons1() {
+		car = new Car(60, 3, 2);
+		double ex = 30;
+		double ac = car.calcFuelCons();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcFuelCons2() {
+		car = new Car(72, 3.5, 3);
+		double ex = 24;
+		double ac = car.calcFuelCons();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcFuelCons3() {
+		car = new Car(110, 4, 8);
+		double ex = 13.75;
+		double ac = car.calcFuelCons();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcFuelCons4() {
+		car = new Car(80, 2, 3);
+		double ex = 26.66;
+		double ac = car.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+	@Test
+	public void testCalcFuelCons5() {
+		car = new Car(200, 8, 40);
+		double ex = 50;
+		double ac = car.calcFuelCons();
+		assertEquals(ex, ac, 0);
+	}
+
+}

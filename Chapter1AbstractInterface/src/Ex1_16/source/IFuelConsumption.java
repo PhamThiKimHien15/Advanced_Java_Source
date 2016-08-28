@@ -7,5 +7,6 @@ package Ex1_16.source;
  * Use to create calcFuelCons() method
  */
 public interface IFuelConsumption {
+	// function: use to calculate the fuel consumption
 	double calcFuelCons();
 }

@@ -10,8 +10,8 @@ import java.io.InputStreamReader;
  * Version: 1.0
  * 
  * Describe: use to show data when the user selects one of the figure have been mentioned, 
- * corresponding to each figure, users will enter additional information of own it, 
- * and then outputting the result of perimeter and area respectively.
+ * corresponding to each figure, users will enter additional information of its own, 
+ * and then outputting the result of perimeter and area corresponding.
  * 
  */
 public class Main {

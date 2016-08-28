@@ -1,0 +1,29 @@
+package Ex1_10.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_10.source.Teacher;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 28/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcSalary() method of Teacher class
+ */
+public class TestTeacher {
+	Ex1_10.source.Teacher teacher;
+	/*
+	 * input is  calcSalary() method
+ 	 * output is True / False use assertEquals
+	 */
+	@Test
+	public void testCalcSalary1() {
+		teacher = new Teacher((float) 2.5, 15000000);
+		double ex = 18150000;
+		double ac = teacher.calcSalary();
+		assertEquals(ex, ac, 0);
+	}
+
+}

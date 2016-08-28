@@ -8,6 +8,11 @@ import java.io.InputStreamReader;
  * Author: Pham Thi Kim Hien
  * Date: 23/08/2016
  * Version: 1.0
+ * 
+ * Description: use to show information list of car or ship.
+ * Users enter general information of cars and ship. 
+ * Next, users choose a figure that each number corresponds to the car and ship, 
+ * then users enter its own information and outputting information list corresponding 
  */
 
 public class MainVehicle {

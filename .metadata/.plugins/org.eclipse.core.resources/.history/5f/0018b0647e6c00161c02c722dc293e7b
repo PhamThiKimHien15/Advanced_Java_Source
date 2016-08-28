@@ -1,0 +1,56 @@
+package Ex1_16.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_16.source.Ship;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 27/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcFuelCons() method and calcSpeed() method of Ship class
+ */
+public class TestShip {
+	Ex1_16.source.Ship ship;
+	/*
+	 * input is  calcFuelCons() method
+ 	 * output is True / False use assertEquals
+	 */ 
+	@Test
+	public void testcalcFuelCons1() {
+		ship =  new Ship(60, 3, 4, 0.5);
+		double ex = 17.14;
+		double ac = ship.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+	@Test
+	public void testcalcFuelCons2() {
+		ship =  new Ship(72, 3.5, 3, 0.4);
+		double ex = 27.69;
+		double ac = ship.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+	@Test
+	public void testcalcFuelCons3() {
+		ship =  new Ship(110, 4, 8, 0.7);
+		double ex = 15.06;
+		double ac = ship.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+	@Test
+	public void testcalcFuelCons4() {
+		ship =  new Ship(80, 2, 3, 0.7);
+		double ex = 17.14;
+		double ac = ship.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+	@Test
+	public void testcalcFuelCons5() {
+		ship =  new Ship(200, 8, 20, 0.3);
+		double ex = 17.14;
+		double ac = ship.calcFuelCons();
+		assertEquals(ex, ac, 0.01);
+	}
+}

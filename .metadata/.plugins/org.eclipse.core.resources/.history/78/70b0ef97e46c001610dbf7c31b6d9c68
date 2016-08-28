@@ -1,0 +1,29 @@
+package Ex1_12.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_12.source.TextBook;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 28/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcMoney() method of Reference Book class
+ */
+public class TestTextBook {
+	Ex1_12.source.TextBook text;
+	/*
+	 * input is calcMoney() method 
+	 * output is True / False use assertEquals
+	 */
+	@Test
+	public void test() {
+		text = new TextBook(15000, 2, "new");
+		double ex = 30000;
+		double ac = text.calcMoney();
+		assertEquals(ex, ac, 1);
+	}
+
+}

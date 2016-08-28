@@ -28,6 +28,19 @@ public class Ship extends Vehicle implements ISpeed, IFuelConsumption {
 		this.fuelType = fuelType;
 	}
 
+	public Ship(double distance, double time, double liters,
+			double startupFuelCons) {
+		super(distance, time, liters);
+		this.startupFuelCons = startupFuelCons;
+	}
+
+	public Ship(double distance, double time, double liters, double downSpeed,
+			double upSpeed) {
+		super(distance, time, liters);
+		this.downSpeed = downSpeed;
+		this.upSpeed = upSpeed;
+	}
+
 	public double getWeight() {
 		return weight;
 	}
@@ -76,11 +89,23 @@ public class Ship extends Vehicle implements ISpeed, IFuelConsumption {
 		this.fuelType = fuelType;
 	}
 
+	/*
+	 * @see Ex1_16.source.IFuelConsumption#calcFuelCons() 
+	 * function: use to calculate the fuel consumption 
+	 * input is fields include distance, liters of Vehicle class and startupFuelCons of this class 
+	 * output is result of the calculation
+	 */
 	@Override
 	public double calcFuelCons() {
 		return getDistance() / (getLiters() - startupFuelCons);
 	}
 
+	/*
+	 * @see Ex1_16.source.ISpeed#calcSpeed() 
+	 * function: use to calculate the Speed 
+	 * input is fields include distance, time of Vehicle class and downSpeed, upSpeed of this class 
+	 * output is result of the calculation
+	 */
 	@Override
 	public double calcSpeed() {
 		return getDistance() / getTime() + getDownSpeed() - getUpSpeed();

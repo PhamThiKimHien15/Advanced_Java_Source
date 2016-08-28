@@ -1,0 +1,29 @@
+package Ex1_11.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_11.source.CurrencyTransaction;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 27/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcBuy() method and calcSpeed() method of Currency Transaction class
+ */
+public class TestCurrencyTransaction {
+	Ex1_11.source.CurrencyTransaction cur;
+	/*
+	 * input is  calcBuy() method
+ 	 * output is True / False use assertEquals
+	 */ 
+	@Test
+	public void test() {
+		cur = new CurrencyTransaction(20, "USD");
+		double ex = ;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+
+}

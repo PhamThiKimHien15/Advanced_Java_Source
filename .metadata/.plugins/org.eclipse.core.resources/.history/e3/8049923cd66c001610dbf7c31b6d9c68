@@ -1,0 +1,91 @@
+package Ex1_11.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_11.source.CurrencyTransaction;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 27/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcBuy() method and calcSpeed() method of Currency Transaction class
+ */
+public class TestCurrencyTransaction {
+	Ex1_11.source.CurrencyTransaction cur;
+	/*
+	 * input is  calcBuy() method
+ 	 * output is True / False use assertEquals
+	 */ 
+	@Test
+	public void testCalcBuy1() {
+		cur = new CurrencyTransaction(20, "USD");
+		double ex = 44670000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy2() {
+		cur = new CurrencyTransaction(20, "EUR");
+		double ex = 50100000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy3() {
+		cur = new CurrencyTransaction(15.24, "AUD");
+		double ex = 26252424;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy4() {
+		cur = new CurrencyTransaction(8.5, "EUR");
+		double ex = 21292500;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy5() {
+		cur = new CurrencyTransaction(2.56, "USD");
+		double ex = 5717760;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy6() {
+		cur = new CurrencyTransaction(20, "USD");
+		double ex = 44675000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy7() {
+		cur = new CurrencyTransaction(20, "EUR");
+		double ex = 50200000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy8() {
+		cur = new CurrencyTransaction(15.24, "AUD");
+		double ex = 2626000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy9() {
+		cur = new CurrencyTransaction(8.5, "EUR");
+		double ex = 21293000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+	@Test
+	public void testCalcBuy10() {
+		cur = new CurrencyTransaction(2.56, "USD");
+		double ex = 5710000;
+		double ac = cur.calcBuy();
+		assertEquals(ex, ac, 0);
+	}
+}

@@ -1,0 +1,24 @@
+package Ex1_10.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 28/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcAverage() method of Student class
+ */
+public class TestTeacher {
+	Ex1_10.source.Teacher teacher;
+	/*
+	 * input is  calcAverage() method
+ 	 * output is True / False use assertEquals
+	 */
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -23,7 +23,6 @@ public class Square extends Shape {
 		this.edge = edge;
 	}
 	/*
-	 * (non-Javadoc)
 	 * @see Ex1_14.source.Shape#perimeter()
 	 * function: use to calculate perimeter of the Square
 	 * input is edge fields
@@ -34,7 +33,6 @@ public class Square extends Shape {
 		return edge * 4;
 	}
 	/*
-	 * (non-Javadoc)
 	 * @see Ex1_14.source.Shape#area()
 	 * function: use to calculate area of the Square
 	 * input is edge fields

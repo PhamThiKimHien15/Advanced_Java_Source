@@ -24,7 +24,6 @@ public class StringedInstrument extends Instrument {
 		this.number = number;
 	}
 	/*
-	 * (non-Javadoc)
 	 * @see Ex1_15.source.Instrument#play()
 	 * function: use to create instructions on how to play musical instruments
 	 * input is use fields

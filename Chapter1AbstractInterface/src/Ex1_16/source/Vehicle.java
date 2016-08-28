@@ -21,6 +21,10 @@ public abstract class Vehicle extends Move {
 		this.color = color;
 		this.manufac = manufac;
 	}
+	
+	public Vehicle(double distance, double time, double liters) {
+		super(distance, time, liters);
+	}
 
 	public String getId() {
 		return id;

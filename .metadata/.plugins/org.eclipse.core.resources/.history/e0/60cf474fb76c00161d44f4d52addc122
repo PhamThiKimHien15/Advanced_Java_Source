@@ -1,0 +1,29 @@
+package Ex1_10.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_10.source.Student;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 28/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcMoney() method of Student class
+ */
+public class TestStudent {
+	Ex1_10.source.Student st;
+	/*
+	 * input is  calcMoney() method
+ 	 * output is True / False use assertEquals
+	 */
+	@Test
+	public void test() {
+		st = new Student(5.5, 7.3);
+		double ex = 6.4;
+		double ac = st.calcAverage();
+		assertEquals(ex, ac, 0);
+	}
+
+}

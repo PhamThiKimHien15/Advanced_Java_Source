@@ -1,0 +1,14 @@
+package Ex1_13.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestBusinessEmployee {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

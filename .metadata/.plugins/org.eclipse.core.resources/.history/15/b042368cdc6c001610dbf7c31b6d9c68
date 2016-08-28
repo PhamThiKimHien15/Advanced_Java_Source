@@ -1,0 +1,29 @@
+package Ex1_11.unitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Ex1_11.source.GoldTransaction;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 27/08/2016
+ * Version: 1.0
+ * 
+ * Unit Test for calcBuy() method and calcSell() method of Currency Transaction class
+ */
+public class TestGoldTransaction {
+	Ex1_11.source.GoldTransaction gold;
+	/*
+	 * input is  calcBuy() method
+ 	 * output is True / False use assertEquals
+	 */ 
+	@Test
+	public void test() {
+		gold = new GoldTransaction(2.6, "24k");
+		double ex = 9138740;
+		double ac = gold.calcTotalMoney();
+		assertEquals(ex, ac, 0);
+	}
+
+}

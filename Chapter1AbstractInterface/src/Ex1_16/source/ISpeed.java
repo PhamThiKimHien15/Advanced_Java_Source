@@ -7,5 +7,6 @@ package Ex1_16.source;
  * Use to create calcSpeed() method
  */
 public interface ISpeed {
+	//function: use to calculate the speed
 	double calcSpeed();
 }
