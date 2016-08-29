@@ -44,4 +44,7 @@
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="Ex1_13.source.ProductionEmployee"/>
 <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+<fullyQualifiedTypeName name="Ex1_19.Order"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.Object"/>
+<fullyQualifiedTypeName name="Ex1_19.source.Order"/>
 </qualifiedTypeNameHistroy>
