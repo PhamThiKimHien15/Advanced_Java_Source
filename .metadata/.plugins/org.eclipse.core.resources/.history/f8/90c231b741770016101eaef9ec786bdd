@@ -1,0 +1,10 @@
+package Ex1_27;
+
+public class Rectangle implements IShap{
+
+	@Override
+	public String draw() {
+		return "Rectangle width normal border";
+	}
+
+}

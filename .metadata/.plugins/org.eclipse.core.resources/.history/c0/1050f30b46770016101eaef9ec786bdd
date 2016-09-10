@@ -1,0 +1,17 @@
+package Ex1_27;
+
+public class RedShapeDecorator extends ShapDecorator  {
+
+	public RedShapeDecorator(IShape shape) {
+		super(shape);
+	}
+	public String draw(String choose){
+		if (choose.equalsIgnoreCase("Y"))
+			return this.shape.draw() + " and " + setRedBorder(shape);
+	}
+	private String setRedBorder(IShape shape) {
+		return "Border color: Red";
+	}
+	
+	
+}

@@ -1,0 +1,13 @@
+package Ex1_27;
+
+public abstract class ShapDecorator implements IShape {
+	protected IShape shap;
+
+	public ShapDecorator(IShape shap) {
+		super();
+		this.shap = shap;
+	}
+	public String draw(){
+		return shap.draw();
+	}
+}

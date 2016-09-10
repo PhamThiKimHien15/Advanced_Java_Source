@@ -1,0 +1,8 @@
+package Ex1_33;
+
+public class ProxyImage implements Image{
+	private RealImage realImage;
+	
+	
+	
+}

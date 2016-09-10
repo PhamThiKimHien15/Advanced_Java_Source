@@ -1,0 +1,25 @@
+package Ex1_28;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(String[] args) {
+		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			Account acc = new Account();
+			MobiObserver mobile = new MobiObserver(acc);
+			EmailObserver email = new EmailObserver(acc);
+			System.out.println("Enter the amount you want to withdraw: ");
+			double state = Double.parseDouble(input.readLine());
+			if(state > 10000000)
+				System.out.println("Money want to withdrawal is incorrect");
+			else{
+				acc.setState(state);					
+			}
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}

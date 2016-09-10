@@ -1,0 +1,29 @@
+package Ex1_28;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Account {
+	private List<Observer> list = new ArrayList<Observer>();
+	private double state;
+	
+	public Account() {
+		super();
+	}
+	public double getState() {
+		return state;
+	}
+	public void setState(double state) {
+		this.state = state;
+		notifyAllObserver();
+	}
+	public void attach(Observer observer) {
+		list.add(observer);
+	}
+	public void notifyAllObserver() {
+		for (Observer observer : list) {
+			observer.update();
+		}
+	}
+	
+}

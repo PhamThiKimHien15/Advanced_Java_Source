@@ -1,0 +1,15 @@
+package Ex1_27;
+
+import java.awt.Shape;
+
+public abstract class ShapDecorator implements Shape {
+	protected IShap shap;
+
+	public ShapDecorator(IShap shap) {
+		super();
+		this.shap = shap;
+	}
+	public String draw(){
+		return shap.draw();
+	}
+}

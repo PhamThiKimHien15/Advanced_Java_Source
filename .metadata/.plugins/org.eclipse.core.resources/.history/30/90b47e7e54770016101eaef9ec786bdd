@@ -1,0 +1,22 @@
+package Ex1_32_Facade;
+
+public class BookingFacade {
+	private IBooker fight;
+	private IBooker hotel;
+	private IBooker train;
+	public BookingFacade() {
+		super();
+		this.fight = new FightBooker();
+		this.hotel = new HotelBooker();
+		this.train = new TrainBooker();
+	}
+	public void getInfoFight(String startDate, String hour, String place) {
+		fight.getInfo(startDate, hour, place);
+	}
+	public void getInfoHotel(String startDate, String endDate, String place) {
+		fight.getInfo(startDate, endDate, place);
+	}
+	public void getInfoTrain(String startDate, String hour, String place) {
+		fight.getInfo(startDate, hour, place);
+	}
+}

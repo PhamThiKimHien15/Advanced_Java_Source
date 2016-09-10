@@ -1,0 +1,5 @@
+package Ex1_32_Facade;
+
+public interface IBook {
+
+}

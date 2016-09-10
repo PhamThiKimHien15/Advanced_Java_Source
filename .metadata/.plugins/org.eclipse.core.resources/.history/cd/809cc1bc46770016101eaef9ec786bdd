@@ -1,0 +1,10 @@
+package Ex1_27;
+
+public class Circle implements IShape{
+
+	@Override
+	public String draw() {
+		return "Circle";
+	}
+	
+}

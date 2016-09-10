@@ -1,0 +1,13 @@
+package Ex1_28;
+
+public class EmailObserver extends Observer {
+	public EmailObserver(Account account) {
+		this.account = account;
+		this.account.attach(this);
+	}
+
+	@Override
+	public String update() {
+		return "Email: Ngan hang AA khinh chao quy khach. Tai khoan cua quy khach da thay doi.\nSo du tainkhoan hien tai la: " + account.getState() + " vnđ";
+	}
+}
