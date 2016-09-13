@@ -1,0 +1,44 @@
+package Ex5_4;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class MainCounter {
+	public static void main(String[] args) throws InterruptedException {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Input counter: ");
+		int n = input.nextInt();
+		int[] arr = new int[n];
+		
+		System.out.println("Input num of Threads: ");
+		int numThreads = input.nextInt();
+		int counter = count(arr, numThreads);
+		
+		String strArr ="";
+		for (int i : arr) {
+			strArr += i + " ";
+		}
+		System.out.println("Max: " + counter);
+	}
+
+	private static int count(int[] arr, int numThreads) throws InterruptedException {
+		int len = arr.length;
+		int counter = -1;
+		
+		//create and start numThreads
+		Counter[] st = new Counter[numThreads];
+		for (int i = 0; i < numThreads; i++) {
+			st[i] = new Counter((i*len)/numThreads,((i+1)*len/numThreads), arr);
+			st[i].start();		
+		}
+		
+		// wait for the threads to finish and sum  their results
+		for (int i = 0; i < numThreads; i++) {
+			st[i].join();
+			System.out.println(st[i].getCount());
+			st[i].sleep(1000);
+		}		
+		return counter;
+	}
+	
+}

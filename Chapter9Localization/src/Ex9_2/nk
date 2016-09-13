@@ -1,0 +1,5 @@
+# File resource resource_vi_VN.properties
+id = mã CD;
+name = tên CD;
+singer = tên ca sỹ
+number = số bài hát

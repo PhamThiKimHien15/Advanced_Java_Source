@@ -1,0 +1,27 @@
+package Ex4_1;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MainStream {
+	public static void main(String[] args) {
+		List<String> strings = Arrays.asList("happy", "sad", "happy", "",
+				"oil", "afdsf", "sad", "oil", "happy", "interesting", "sad", "interesting", "abc");
+		// Count the empty strings
+		long count = (long) strings.stream().filter(string -> string.isEmpty()).count();
+		System.out.println("Element null = " + count);
+		
+		// Count number of strings with length greater than or equal 5
+		int countLenght = (int) strings.stream().filter(n -> n.length() >= 5).count();
+		System.out.println("Count number element have length >= 5:  " + countLenght);
+		
+		// Count number of strings which startswith "a"
+		count = strings.stream().filter(n -> n.startsWith("a")).count();		
+		System.out.println("Count number element have value beginning with a: " + count);
+		
+		//Count number of strings which equal "happy"
+		count = strings.stream().filter(n -> n.equalsIgnoreCase("happy")).count();		
+		System.out.println("Count number element have value equal \"happy\": " + count);
+		
+	}
+}

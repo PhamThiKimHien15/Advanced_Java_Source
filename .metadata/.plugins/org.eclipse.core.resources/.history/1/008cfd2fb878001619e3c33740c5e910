@@ -1,0 +1,25 @@
+package Ex4_2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+
+public class MainStream {
+	public static void main(String[] args) {
+		Random random = new Random();
+		// create list 1 by random
+		List<Integer> list = new ArrayList<Integer>();
+		random.ints(0, 10).limit(15).forEach(i -> list.add(i));
+		System.out.println("-------------List 1-------------");
+		System.out.println("List 1: ");
+		list.forEach(i -> System.out.print(i + " "));
+		
+		// create list 2 from list 1 which 
+		System.out.println("\n-------------List 2-------------");
+		List<Integer> list2 = list.stream().map(i -> i*i).collect(Collectors.toList());
+		System.out.println("List 2: " + list2);
+		
+	}
+}

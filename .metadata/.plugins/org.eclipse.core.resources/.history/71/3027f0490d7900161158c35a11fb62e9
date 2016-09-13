@@ -1,0 +1,18 @@
+package Ex4_3;
+
+import java.util.stream.Stream;
+
+public class test {
+	public static void main(String[] args) {
+		Stream.iterate(2L, n  ->  n  + 1)
+	    .filter(i -> isOdd(i))
+	    .limit(5)
+	    .forEach(System.out::println);
+	  }
+	  public static boolean isOdd(long number) {
+	    if (number % 3 == 0) {
+	      return false;
+	    }
+	    return true;
+	  }
+}

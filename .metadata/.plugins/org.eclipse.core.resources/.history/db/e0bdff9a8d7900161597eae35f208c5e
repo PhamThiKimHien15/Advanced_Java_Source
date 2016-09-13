@@ -1,0 +1,36 @@
+package Ex5_4;
+
+public class Counter extends Thread {
+	private int count;
+	private int[] arr;
+	private int lo;
+	private int hi;
+//
+//	public Counter( int lo, int hi, int[] arr, int count) {
+//		super();
+//		this.arr = arr;
+//		this.lo = lo;
+//		this.hi = hi;
+//		this.count = count;
+//	}
+	
+
+	public int getCount() {
+		return count;
+	}
+
+	public Counter(int count) {
+	super();
+	this.count = count;
+}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	@Override
+	public void run() {
+		for (int i = this.count; i <= (this.count*10); i++) {
+			this.count = i;
+		}
+	}
+}

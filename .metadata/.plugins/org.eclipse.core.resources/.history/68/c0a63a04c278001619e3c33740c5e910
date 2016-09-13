@@ -1,0 +1,23 @@
+package Ex4_3;
+
+import java.util.Optional;
+import java.util.stream.Stream;
+
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 12/09/2016
+ * Version: 1.0
+ */
+public class MainStream {
+	public static void main(String[] args) {
+		Stream<Student> sts = Stream.of(new Student("Le Phuong Thanh", 28, 7d, 8d),
+				new Student("Le Nghia", 20, 8d, 10d),
+				new Student("Nha Phuong", 25, 10d, 8d),
+				new Student("Tran Thanh", 28, 8.5d, 9.5d));
+		// show information of Student
+		sts.forEach(i -> System.out.println(i.toString()));
+		
+		int count = (int) sts.filter((Student a) -> 18 < a.age).count();
+		System.out.println(count);
+	}
+}

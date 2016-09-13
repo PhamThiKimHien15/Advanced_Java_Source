@@ -1,0 +1,36 @@
+package Ex9_1;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class MainLanguage {
+	public static void main(String[] args) {
+		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			int ans;
+			while (true){
+				System.out.println("1. Viet Nam");
+				System.out.println("2. English");
+				ans = Integer.parseInt(input.readLine());
+				if (ans == 1 || ans == 2)
+					break;
+			}
+			switch (ans) {
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			default:
+				break;
+			}
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		
+		
+	}
+}
