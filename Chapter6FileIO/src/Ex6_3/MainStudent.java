@@ -1,0 +1,107 @@
+package Ex6_3;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+/*
+ * author: Pham Thi Kim Hien
+ * date: 14/09/2016
+ * Version: 1.0
+ */
+public class MainStudent {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	static String name;
+	static int grade;
+	static double semaster1;
+	static double semaster2;
+	static double avg;
+	public static void main(String[] args) {
+		try {
+			ListStudent list;
+			Student stu = new Student(name, grade, semaster1, semaster2, avg);
+			int ans;
+			do {				
+				while (true) {
+					System.out.println("===================");
+					System.out.println("1. Add Student");
+					System.out.println("2. Show information of student");
+					System.out.println("3. Statistic");
+					System.out.println("4. Exit");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >= 1 && ans <= 4)
+						break;
+				}
+				// read file
+				list = new ListStudent();
+				readFile(list, stu);
+				switch (ans) {
+				case 1:
+					// write information of student into file
+					writeFile(list, stu);					
+					break;
+				case 2:
+					// Show information of student
+					list.showInfo();
+					break;
+				case 3:
+					// show information of students about student evaluations
+					list.avaluate();
+					// show information about number students and average score of each grade 
+					list.numStudentAndAvgByGrade();
+					break;
+				}								
+			} while (ans !=4);
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}					
+	}
+	// show information of students about student evaluations
+	private static void writeFile(ListStudent list, Student stu) {
+		try (DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("src/Ex6_3/tongketnamhoc.txt", true)))){
+			System.out.println("Enter name: ");
+			name = input.readLine();
+			System.out.println("Enter grade: ");
+			grade = Integer.parseInt(input.readLine());
+			System.out.println("Enter semaster 1: ");
+			semaster1 = Double.parseDouble(input.readLine());
+			System.out.println("Enter semaster 2: ");
+			semaster2 = Double.parseDouble(input.readLine());
+			out.writeUTF(name);
+			out.writeInt(grade);
+			out.writeDouble(semaster1);
+			out.writeDouble(semaster2);
+			out.close();
+			System.out.println("Diary has been written");
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	// read file
+	private static void readFile(ListStudent list, Student stu) {
+		try (DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("src/Ex6_3/tongketnamhoc.txt")))){
+			while (in.available()>0) {
+				name = in.readUTF();
+				grade = in.readInt();
+				semaster1 = in.readDouble();
+				semaster2 = in.readDouble();
+				avg = (semaster1 + semaster2 * 2) / 3;
+				DecimalFormat df = new DecimalFormat("###.##");
+				avg = Double.parseDouble(df.format(avg));
+				stu = new Student(name, grade, semaster1, semaster2, avg);
+				list.addStudent(stu);
+			}
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	
+}

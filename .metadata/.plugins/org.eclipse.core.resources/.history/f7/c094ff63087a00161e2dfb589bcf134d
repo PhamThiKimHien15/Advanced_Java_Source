@@ -1,0 +1,147 @@
+package Ex9_2;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.ResourceBundle;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 07/09/2016
+ * Version: 1.0
+ */
+public class MainCD {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		ListCD list = new ListCD();
+		CD cd;
+		try {
+			int ans;
+			while (true){
+				System.out.println("1. Viet Nam");
+				System.out.println("2. English");
+				ans = Integer.parseInt(input.readLine());
+				if (ans == 1 || ans == 2)
+					break;
+			}
+			Locale curr;
+			ResourceBundle message;
+			int choose1;
+			switch (ans) {
+			case 1:		
+				curr = new Locale("vi", "VN");
+				message = ResourceBundle.getBundle("Ex9_2/resource_vi_VN", curr);
+				while (true) {
+					while (true) {
+						System.out.println("1. Them CD");
+						System.out.println("2. Sắp xếp CD theo tên");
+						System.out.println("3. Hiển thị thông tin CD");
+						System.out.println("4. Thoát");
+						choose1 = Integer.parseInt(input.readLine());
+						if(choose1 >= 1 && choose1 <= 4)
+							break;
+					}
+						
+					// add cd into CD list
+					if (choose1 == 1){	
+						String choose;
+						do {				
+							System.out.println(message.getString("id") + ": ");
+							String id = input.readLine();							
+							System.out.println(message.getString("name") + ": ");
+							String name = input.readLine();
+							System.out.println(message.getString("singer") + ": ");
+							String singer = input.readLine();
+							System.out.println(message.getString("number") + ": ");
+							int numOfSongs = Integer.parseInt(input.readLine());
+							System.out.println(message.getString("price") + ": ");
+							double price = Double.parseDouble(input.readLine());
+							cd = new CD(id, name, singer, numOfSongs, price);
+							//list.addCD(cd);				
+							Enumeration<String> keys = message.getKeys();
+							while (keys.hasMoreElements()) {
+								String key = keys.nextElement();
+								String value = message.getString(key);
+								list.addCD(cd);
+							}
+							
+							while (true) {
+								System.out.println("Ban co muon them cd nữa hay khong?(co/ko): ");
+								choose = input.readLine();
+								if (choose.equalsIgnoreCase("co") || choose.equalsIgnoreCase("ko"))
+									break;
+							}			
+						} while (choose.equalsIgnoreCase("co"));
+					}
+					// sort the list by cd name
+					else if (choose1 == 2){
+						list.listSort();
+					}
+					// show list of cd
+					else if (choose1 == 3)
+						list.showInfo();
+					// Exit loop
+					else
+						break;
+				}
+				break;
+			case 2:
+				curr = new Locale("en", "EN");
+				message = ResourceBundle.getBundle("Ex9_2/resource_en_US", curr);						
+				while (true) {
+					while (true) {
+						System.out.println("1. Add CD");
+						System.out.println("2. Sort by name");
+						System.out.println("3. Show information CD");
+						System.out.println("4. Exit");
+						choose1 = Integer.parseInt(input.readLine());
+						if(choose1 >= 1 && choose1 <= 4)
+							break;
+					}
+						
+					// add cd into CD list
+					if (choose1 == 1){	
+						String choose;
+						do {							
+							System.out.println("Enter id: ");
+							String id = input.readLine();
+							System.out.println("Enter name: ");
+							String name = input.readLine();
+							System.out.println("Enter singer: ");
+							String singer = input.readLine();
+							System.out.println("Enter number of songs: ");
+							int numOfSongs = Integer.parseInt(input.readLine());
+							System.out.println("Enter price: ");
+							double price = Double.parseDouble(input.readLine());
+							cd = new CD(id, name, singer, numOfSongs, price);
+							list.addCD(cd);											
+							while (true) {
+								System.out.println("Do you want to enter next?(Y/N): ");
+								choose = input.readLine();
+								if (choose.equalsIgnoreCase("Y") || choose.equalsIgnoreCase("N"))
+									break;
+							}			
+						} while (choose.equalsIgnoreCase("Y"));
+					}
+					// sort the list by cd name
+					else if (choose1 == 2){
+						list.listSort();
+					}
+					// show list of cd
+					else if (choose1 == 3)
+						list.showInfo();
+					// Exit loop
+					else
+						break;
+				}
+				break;
+			default:
+				break;
+			}
+								
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}

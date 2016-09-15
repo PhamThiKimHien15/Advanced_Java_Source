@@ -1,0 +1,51 @@
+package Ex6_3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListStudent {
+	private List<Student> list;
+	
+	public ListStudent(){
+		this.list = new ArrayList<Student>();
+	}
+	
+	// add student
+	public void addStudent(Student stu) {
+		list.add(stu);
+	}
+	
+	// show information of students
+	public void showInfo() {
+		for (Student stu : list) {
+			System.out.println(stu.toString());
+		}
+	}
+	
+	// avaluate student
+	public void avaluate() {
+		int countExcellent =(int) list.stream().filter(n -> n.getAvg() >= 8).count();
+		int countGood = (int) list.stream().filter(n -> n.getAvg() >=7 && n.getAvg() < 8).count();;
+		int countAverage = (int) list.stream().filter(n -> n.getAvg() >= 5 && n.getAvg() < 7).count();;
+		int countWeak = (int) list.stream().filter(n -> n.getAvg() < 5).count();;
+
+		System.out.println("Number of excellent Student: " + countExcellent
+				+ "\nNumber of good student: " + countGood
+				+ "\nNumber of average student: " + countAverage
+				+ "\nNumber of weak student: " + countWeak);
+	}	
+	
+	// number of students in each grade
+	public void numStudentbyGrade() {
+		int grade10 = (int) list.stream().filter(n -> n.getGrade() == 10).count();
+		int grade11 = (int) list.stream().filter(n -> n.getGrade() == 11).count();
+		int grade12 = (int) list.stream().filter(n -> n.getGrade() == 12).count();
+		
+		System.out.println("Number students grade 10: " + grade10
+				+ "\nNumber students grade 11: " + grade11
+				+ "\nNumber students grade 12: " + grade12);
+	}
+	
+	
+	
+}

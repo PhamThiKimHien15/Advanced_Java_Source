@@ -1,0 +1,36 @@
+package Ex6_4;
+
+import java.util.ArrayList;
+import java.util.List;
+/*
+ * author: Pham Thi Kim Hien
+ * date: 14/09/2016
+ * Version: 1.0
+ */
+public class ListEmployee {
+	private List<Employee> list;
+	
+	public ListEmployee(){
+		this.list = new ArrayList<Employee>();
+	}
+	
+	// add employee
+	public void addEmployee(Employee emp) {
+		this.list.add(emp);
+	}
+	
+	// search employee by name
+	public void searchByName(String name) {
+		for (Employee employee : list) {
+			if(employee.getName().equalsIgnoreCase(name))
+				System.out.println(employee.toString() );
+		}
+	}
+	
+	// show information of employee
+	public void showInfo() {
+		for (Employee employee : list) {
+			System.out.println(employee.toString());
+		}
+	}
+}

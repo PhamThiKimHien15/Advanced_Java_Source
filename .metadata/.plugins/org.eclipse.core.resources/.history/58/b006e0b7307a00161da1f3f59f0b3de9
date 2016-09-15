@@ -1,0 +1,32 @@
+package Ex6_1;
+
+public class Diary {
+	String diary = "";
+	String date;
+	String content;
+	public Diary(String diary, String date, String content) {
+		super();
+		this.diary = diary;
+		this.date = date;
+		this.content = content;
+	}
+	public String getDiary() {
+		return diary;
+	}
+	public void setDiary(String diary) {
+		this.diary = diary;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}

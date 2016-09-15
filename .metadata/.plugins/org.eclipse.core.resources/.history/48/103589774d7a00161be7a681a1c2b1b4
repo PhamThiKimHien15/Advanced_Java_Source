@@ -1,0 +1,38 @@
+package Ex6_3;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+
+public class MainStudent {
+	public static void main(String[] args) {
+		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		readFlie();
+		
+		
+		
+		
+	}
+
+	private static void readFlie() {
+		try (DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("src/Ex6_3/tongketnamhoc.txt")))){
+			while (in.available()>0) {
+				String name = in.readUTF();
+				int grade = in.readInt();
+				double semaster1 = in.readDouble();
+				double semaster2 = in.readDouble();
+				double avg = (semaster1 + semaster2 * 2) / 3;
+				DecimalFormat df = new DecimalFormat("###.##");
+				avg = Double.parseDouble(df.format(avg));
+				System.out.println(name);
+			}
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+}

@@ -1,0 +1,13 @@
+# File resource resource_vi_VN.properties
+id=ma CD
+name=ten CD
+singer=ten ca sy
+number=so bai hat
+price=gia thanh
+add=them CD
+sortByName= sap xep CD theo ten
+showInfo= hien thi thong tin cua CD
+exit=thoat 
+continue=ban co muon them tiep khong?(co/khong)
+yes=co;
+no=khong;

@@ -8,7 +8,11 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
+/*
+ * author: Pham Thi Kim Hien
+ * Date: 13/09/2016
+ * version: 1.0
+ */
 public class MainLanguage {
 	public static void main(String[] args) {
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

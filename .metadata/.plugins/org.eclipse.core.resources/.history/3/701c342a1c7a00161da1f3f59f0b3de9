@@ -1,0 +1,14 @@
+# File resource resource_en_USproperties
+id=id
+name=name
+singer=singer
+number=number
+price=price
+sumprice=sum price
+add=Add CD
+sortByName=Sort by name
+showInfo=Show information CD
+exit=Exit
+continue=Do you want to enter next?(Y/N)
+yes=yes;
+no=no;

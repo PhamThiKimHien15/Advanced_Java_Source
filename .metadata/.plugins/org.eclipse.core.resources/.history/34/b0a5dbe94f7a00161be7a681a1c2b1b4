@@ -1,0 +1,49 @@
+package Ex6_3;
+
+public class Student {
+	private String name;
+	private int grade;
+	private double semaster1;
+	private double semster2;
+	private double avg;
+	public Student(String name, int grade, double semaster1, double semster2,
+			double avg) {
+		super();
+		this.name = name;
+		this.grade = grade;
+		this.semaster1 = semaster1;
+		this.semster2 = semster2;
+		this.avg = avg;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public double getSemaster1() {
+		return semaster1;
+	}
+	public void setSemaster1(double semaster1) {
+		this.semaster1 = semaster1;
+	}
+	public double getSemster2() {
+		return semster2;
+	}
+	public void setSemster2(double semster2) {
+		this.semster2 = semster2;
+	}
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+	
+}

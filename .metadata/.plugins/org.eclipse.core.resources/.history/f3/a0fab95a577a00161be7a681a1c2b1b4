@@ -1,0 +1,76 @@
+package Ex6_3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListStudent {
+	private List<Student> list;
+	
+	public ListStudent(){
+		this.list = new ArrayList<Student>();
+	}
+	
+	// add student
+	public void addStudent(Student stu) {
+		list.add(stu);
+	}
+	
+	// show information of students
+	public void showInfo() {
+		for (Student stu : list) {
+			System.out.println(stu.toString());
+		}
+	}
+	
+	// avaluate student
+	public void avaluate() {
+		int countExcellent =(int) list.stream().filter(n -> n.getAvg() >= 8).count();
+		int countGood = (int) list.stream().filter(n -> n.getAvg() >=7 && n.getAvg() < 8).count();;
+		int countAverage = (int) list.stream().filter(n -> n.getAvg() >= 5 && n.getAvg() < 7).count();;
+		int countWeak = (int) list.stream().filter(n -> n.getAvg() < 5).count();;
+
+		System.out.println("Number of excellent Student: " + countExcellent
+				+ "\nNumber of good student: " + countGood
+				+ "\nNumber of average student: " + countAverage
+				+ "\nNumber of weak student: " + countWeak);
+	}	
+	
+	// number of students and average score in each grade 
+	public void numStudentAndAvgByGrade() {
+		int countGrade10 = 0;
+		int countGrade11 = 0;
+		int countGrade12 = 0;
+		double avg10 = 0;
+		double avg11 = 0;
+		double avg12 = 0;
+		double result10 = 0;
+		double result11 = 0;
+		double result12 = 0;
+		for (Student student : list) {
+			if(student.getGrade() == 10){
+				countGrade10++;
+				avg10 += student.getAvg();
+			}
+			else if(student.getGrade() == 11){
+				countGrade11++;
+				avg11 += student.getAvg();
+			}
+			else if(student.getGrade() == 12){
+				countGrade12++;
+				avg12 += student.getAvg();
+			}
+		}
+		result10 = avg10 / countGrade10;
+		result11 = avg11 / countGrade11;
+		result12 = avg12 / countGrade12;		
+		System.out.println("Number students grade 10: " + countGrade10 
+				+ "\tThe average score of the grade 10: " + result10
+				+ "\nNumber students grade 11: " + countGrade11
+				+ "\tThe average score of the grade 11: " + result11
+				+ "\nNumber students grade 12: " + countGrade12
+				+ "\tThe average score of the grade 12: " + result12);
+	}
+	
+	
+	
+}

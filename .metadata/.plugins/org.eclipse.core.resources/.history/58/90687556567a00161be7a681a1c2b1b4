@@ -1,0 +1,52 @@
+package Ex6_3;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainStudent {
+	static String name;
+	static int grade;
+	static double semaster1;
+	static double semaster2;
+	static double avg;
+	public static void main(String[] args) {
+		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		ListStudent list = new ListStudent();
+		Student stu = new Student(name, grade, semaster1, semaster2, avg);
+		int count = 1;
+		while (count) {
+			System.out.println("1. Add Student");
+			System.out.println("2. Show information of student");
+			System.out.println("3. Statistic");
+			
+		}
+		readFile(list, stu);
+		list.avaluate();		
+	}
+	private static void readFile(ListStudent list, Student stu) {
+		try (DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("src/Ex6_3/tongketnamhoc.txt")))){
+			while (in.available()>0) {
+				name = in.readUTF();
+				grade = in.readInt();
+				semaster1 = in.readDouble();
+				semaster2 = in.readDouble();
+				avg = (semaster1 + semaster2 * 2) / 3;
+				DecimalFormat df = new DecimalFormat("###.##");
+				avg = Double.parseDouble(df.format(avg));
+				stu = new Student(name, grade, semaster1, semaster2, avg);
+				list.addStudent(stu);
+			}
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	
+}

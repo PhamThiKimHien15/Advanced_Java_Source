@@ -1,0 +1,81 @@
+package Ex6_4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import Ex6_3.ListStudent;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 19/08/2016
+ * Version: 1.0
+ * 
+ * Main: Employee class
+ */
+public class MainEmployee {
+
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	static String name;
+	static double ceoSalary;
+	static int numOfPeople;
+	static double subsidize;
+	public static void main(String[] args) {
+		try {
+			ListStudent list = new ListStudent();
+			Employee employee = new Employee(name, ceoSalary, numOfPeople, subsidize);
+			int ans;
+			do {
+				while (true) {
+					System.out.println("=========================");
+					System.out.println("1. Add Employee");
+					System.out.println("2. Search Employee");
+					System.out.println("3. Show information of Employee");
+					System.out.println("4. Exit");
+					System.out.println("Choose: ");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >=1 && ans <= 4)
+						break;
+				}
+				
+				switch (ans) {
+				case 1:
+					// add employee
+					addEmployee(employee);
+					break;
+				case 2:
+					// search employee
+					
+					break;
+				case 3:
+					// show information of Employee
+					
+					break;
+				default:
+					break;
+				}
+				
+				
+			} while (ans != 4);			
+			
+			System.out.println("enter full name of the employee: ");
+			String name = input.readLine();
+			System.out.println("Enter the employee's salary coefficient ");
+			double ceoSalary = Double.parseDouble(input.readLine());
+			System.out.println("Enter the number of family allowances: ");
+			int numOfPeople = Integer.parseInt(input.readLine());
+			System.out.println("Enter subsidies: ");
+			double subsidize = Double.parseDouble(input.readLine());
+			Employee st = new Employee(name, ceoSalary, numOfPeople, subsidize);
+			System.out.println("The Income: " + String.format("%.2f", st.calcOfIncome()));
+			System.out.println("The Income Tax: " + String.format("%.2f", st.calcOfTaxIncome()));
+			System.out.println("The TNCN Tax: " + String.format("%.2f", st.calcTaxTNCN()));
+			System.out.println("Real wage: " + String.format("%.2f", st.calcRealSalary()));
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	private static void addEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+}

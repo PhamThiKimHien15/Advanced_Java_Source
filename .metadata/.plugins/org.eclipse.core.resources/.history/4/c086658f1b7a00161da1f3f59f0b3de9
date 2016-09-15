@@ -1,0 +1,15 @@
+# File resource resource_vi_VN.properties
+id=mã CD
+name=tên CD
+singer=tên ca sỹ
+number=số bài hát
+price=giá thành
+sumprice=tổng giá thành
+#list=danh sách các CD
+add=them CD
+sortByName= sap xep CD theo ten
+showInfo= hien thi thong tin cua CD
+exit=thoat 
+continue=bạn có muốn thêm tiếp không?(co/khong)
+yes=co;
+no=khong;

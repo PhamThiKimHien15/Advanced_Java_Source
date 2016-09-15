@@ -1,0 +1,13 @@
+package Ex6_4;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListEmployee {
+	private List<Employee> list;
+	
+	public ListEmployee(){
+		this.list = new ArrayList<Employee>();
+	}
+	
+}

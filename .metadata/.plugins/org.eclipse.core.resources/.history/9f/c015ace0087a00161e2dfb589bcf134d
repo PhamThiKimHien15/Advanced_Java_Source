@@ -1,0 +1,11 @@
+# File resource resource_vi_VN.properties
+id=mã CD
+name=tên CD
+singer=tên ca sỹ
+number=số bài hát
+price=giá thành
+sumprice=tổng giá thành
+#list=danh sách các CD
+#continue=bạn có muốn thêm mới không
+$yes=co;
+$no=không;

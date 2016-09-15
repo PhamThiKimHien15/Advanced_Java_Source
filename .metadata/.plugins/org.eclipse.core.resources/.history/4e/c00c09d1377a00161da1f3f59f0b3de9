@@ -1,0 +1,68 @@
+package Ex6_1;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int ans;
+		do {
+			while (true){
+				System.out.println("==================================");
+				System.out.println("1.View diary");
+				System.out.println("2.Write new diary");
+				System.out.println("3.Exit");
+				ans = input.nextInt();
+				if (ans >= 1 && ans <= 3)
+					break;
+			}
+			Diary diary;
+			switch (ans) {
+			case 1:
+				diary = new Diary();
+				viewDiary();
+				break;
+			case 2:
+				writeNewDiary(diary);
+				break;
+			default:
+				break;
+			}
+		} while (ans == 1 || ans == 2);
+		
+				
+	}
+
+	private static void writeNewDiary(Diary diary, String content) {
+		try (DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("src/Ex6_1/daily.txt", true)))){
+			diary = new Diary(content);
+			out.writeUTF(diary.toString());
+			out.close();
+			System.out.println("Diary has been written");
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	private static void viewDiary() {
+		String diary1 = "";
+		String date,  content;
+		try (DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("src/Ex6_1/daily.txt")))) {
+			while (in.available()>0) {
+				date = in.readUTF();
+				content = in.readUTF();
+				diary1 += date + "\n" + content + "\n\n";				
+			}			
+		} catch ( IOException e) {
+			System.err.println(e.getMessage());
+		}
+		System.out.println(diary1);
+	}
+}

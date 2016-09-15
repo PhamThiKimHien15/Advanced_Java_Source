@@ -1,0 +1,22 @@
+package Ex7_1;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+public class MainContact {
+	public static void main(String[] args) {
+		Contact contact = new Contact();
+		// create and write contact.xml file
+		createFlie();
+		
+		
+	}
+
+	private static void createFlie() {
+		try {
+			
+		} catch (ParserConfigurationException | TransformerException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}

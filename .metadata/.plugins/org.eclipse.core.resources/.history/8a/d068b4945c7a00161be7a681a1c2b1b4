@@ -1,0 +1,62 @@
+package Ex2_5;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+/*
+ * Author: Pham Thi Kim Hien
+ * Date: 08/09/2016
+ * Version: 1.0
+ */
+public class EmployeeManagement {
+	private Map<String, Employee> list;
+	
+	public EmployeeManagement(){
+		this.list = new HashMap<String, Employee>();
+	}
+	
+	// add Employee into list
+	public void addEmployee(String key, Employee emp) {
+		this.list.put(key,emp);
+	}
+	
+	// show information of all employees follow salary from high to low
+	public void showInfo() {
+		System.out.println("\nSorted Map......By Value");
+		Map<String, Employee> sortedMap = sortByValue(list);		
+		for (String key : sortedMap.keySet()) {
+			System.out.println("\tID: " + key + sortedMap.get(key).toString());
+		}
+	}
+	
+	// sort map by value
+	private Map<String, Employee> sortByValue(Map<String, Employee> unsortMap) {
+
+        // 1. Convert Map to List of Map
+        List<Map.Entry<String, Employee>> list = new LinkedList<Map.Entry<String, Employee>>(unsortMap.entrySet());
+
+        // 2. Sort list with Collections.sort(), provide a custom Comparator
+        //    Try switch the o1 o2 position for a different order
+        Collections.sort(list, new Comparator<Map.Entry<String, Employee>>() {
+            public int compare(Map.Entry<String, Employee> o1,
+                               Map.Entry<String, Employee> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        // Loop the sorted list and put it into a new insertion order Map LinkedHashMap
+        Map<String, Employee> sortedMap = new LinkedHashMap<String, Employee>();
+        for (Map.Entry<String, Employee> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }        
+        return sortedMap;
+    }
+
+	
+	
+}
