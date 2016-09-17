@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Department>
+  <employee>
+    <id>1</id>
+    <name>Le Thanh</name>
+    <sex>0</sex>
+    <birthday>12/12/1990</birthday>
+    <salary>1.5E7</salary>
+    <address>cong quynh</address>
+    <id_Department>1</id_Department>
+  </employee>
+  <employee>
+    <id>2</id>
+    <name>Tran Thanh</name>
+    <sex>1</sex>
+    <birthday>2/2/1980</birthday>
+    <salary>2.0E7</salary>
+    <address>thanh ton</address>
+    <id_Department>2</id_Department>
+  </employee>
+  <employee>
+    <id>2</id>
+    <name>Quynh Anh</name>
+    <sex>0</sex>
+    <birthday>4/4/1998</birthday>
+    <salary>2.5E7</salary>
+    <address>nguyen trai</address>
+    <id_Department>1</id_Department>
+  </employee>
+  <employee>
+    <id>3</id>
+    <name>Le Nghia</name>
+    <sex>1</sex>
+    <birthday>15/9/1994</birthday>
+    <salary>1.8E7</salary>
+    <address>Le Loi</address>
+    <id_Department>1</id_Department>
+  </employee>
+</Department>

@@ -1,0 +1,17 @@
+package Ex7_1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListContact {
+	private List<Contact> list;
+	
+	public ListContact(){
+		this.list = new ArrayList<Contact>();
+	}
+	
+	// add contact
+	public void addContact(Contact co) {
+		list.add(co);
+	}
+}

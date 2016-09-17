@@ -1,0 +1,27 @@
+package Ex7_2;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class MainManageEmployee {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		try {
+			int ans;
+			do {
+				while (true) {
+					System.out.println("1. Add Department");
+					System.out.println("2. Add Employee");
+					System.out.println("3. Show information of employee drug Department");
+					System.out.println("4. Exit");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >= 1 && ans <= 4 )
+						break;
+				}
+			} while (ans != 4);
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}

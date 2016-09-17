@@ -1,0 +1,21 @@
+package Ex8_1;
+
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.mysql.cj.api.jdbc.Statement;
+
+public class UserController {
+	Database db = new Database();
+	public User loginUser(String username, String password) {
+		User user = null;
+		try (Connection conn = db.connect()){
+			Statement statement = (Statement) conn.createStatement();
+			
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return user;
+	}
+}

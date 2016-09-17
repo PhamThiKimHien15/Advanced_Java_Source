@@ -1,0 +1,30 @@
+package Ex7_2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ManageEmployee {
+	public List<Employee> listEmp;
+	public List<Department> listDep;
+	
+	public ManageEmployee(){
+		this.listEmp = new ArrayList<Employee>();
+		this.listDep = new ArrayList<Department>();
+	}
+	
+	// add Employee
+	public void addEmp(Employee emp) {
+		this.listEmp.add(emp);
+	}
+	
+	// add Department
+	public void addDep(Department dep) {
+		this.listDep.add(dep);
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,29 @@
+package Ex8_2;
+
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class UserController {
+	Database db = new Database();
+	public User loginUser(String username, String password) throws ClassNotFoundException {
+		User user = null;
+		try (Connection conn = db.connect()){
+			System.out.println("jhjhhjn");
+			java.sql.Statement statement = conn.createStatement();
+			String sql = "SELECT * FROM user WHERE username like '" + username + "' and password like '"+ password +"'";
+			ResultSet result = statement.executeQuery(sql);
+			while (result.next()) {
+				user = new User();
+				user.setUsername(result.getString("username"));
+				user.setPassword(result.getString("password"));				
+				break;
+			}
+			conn.close();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return user;
+	}
+}

@@ -1,0 +1,15 @@
+package Ex8_1;
+
+import java.sql.Connection;
+
+public class UserController {
+	Database db = new Database();
+	public User loginUser(String username, String password) {
+		User user = null;
+		try (Connection conn = db.){
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Department>
+  <employee>
+    <id>1</id>
+    <name>Le Thanh</name>
+    <sex>2</sex>
+    <birthday>15/8/1990</birthday>
+    <salary>1.5E7</salary>
+    <address>thanh ton</address>
+  </employee>
+  <employee>
+    <id>1</id>
+    <name>Tran Thanh</name>
+    <sex>1</sex>
+    <birthday>10/2/1980</birthday>
+    <salary>2.0E7</salary>
+    <address>cong quynh</address>
+  </employee>
+</Department>

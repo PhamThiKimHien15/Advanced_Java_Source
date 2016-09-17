@@ -1,0 +1,54 @@
+package Ex8_2;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductController {
+	Database db = new Database();
+	
+	// add product
+	public void addProduct(Product pro) {
+		try (Connection conn = db.connect()){
+			String sql = "INSERT INTO product values (NULL, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement prestmt = conn.prepareStatement(sql);
+			prestmt.setString(1, pro.getName());
+			prestmt.setString(2, String.valueOf(pro.getPrice()));
+			prestmt.setString(3, String.valueOf(pro.getAmount()));
+			prestmt.setString(4, pro.getImage());
+			prestmt.setString(5, String.valueOf(pro.getCategoryId()));
+			prestmt.setString(6, String.valueOf(pro.getCreateDate()));
+			prestmt.setString(7, String.valueOf(pro.getOnSell()));
+			prestmt.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	// search product by name
+	public List<Product> getAllProduct() {
+		List<Product> list = new ArrayList<Product>();
+		try (Connection conn = db.connect()){
+			Statement stmt = conn.createStatement();
+			String sql = "SELECT * FROM product";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()){
+				Product pro = new Product(rs.getString("name"), Double.parseDouble(rs.getString("price")), 
+						Integer.parseInt(rs.getString("amount")), rs.getString("image"), 
+						Integer.parseInt(rs.getString("categoryId")), 
+								Date.valueOf(rs.getString("createDate")), 
+										Integer.parseInt(rs.getString("onSell")));
+				list.add(pro);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return list;
+	}
+	
+}

@@ -1,0 +1,31 @@
+package Ex8_2;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class CategoryController {
+	Database db = new Database();
+	
+	//  get data from database to the list
+	public ArrayList<Category> getCategory(){
+		ArrayList<Category> list = new ArrayList<Category>();
+		try (Connection conn = db.connect()){
+			Statement stmt = conn.createStatement();
+			String sql = "SELECT * FROM category";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Category cate = new Category(rs.getString("name"), rs.getString("description"), 
+						rs.getString("image"));
+				list.add(cate);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return list;
+	}
+	
+	
+}

@@ -1,0 +1,52 @@
+package Ex7_1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListContact {
+	private List<Contact> list;
+	
+	public ListContact(){
+		this.list = new ArrayList<Contact>();
+	}
+	
+	// add contact
+	public void addContact(Contact co) {
+		list.add(co);
+	}
+	
+	// show information of contact
+	public void showInfo() {
+		for (Contact contact : list) {
+			System.out.println(contact.toString());
+		}
+	}
+	
+	// search contact by name or phone
+	public Contact searchContact(String nameOrPhone) {
+		for (Contact contact : list) {
+			if (contact.getName().equalsIgnoreCase(nameOrPhone))
+				return contact;
+			else if (contact.getPhone().equalsIgnoreCase(nameOrPhone))
+				return contact;
+		}
+		return null;
+	}
+	
+	// update contact
+	public void updateContact(String nameOrPhone) {
+		if (searchContact(nameOrPhone) != null)
+			System.out.println(searchContact(nameOrPhone));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

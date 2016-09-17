@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Company>
+  <department>
+    <id>3</id>
+    <name>R&amp;D department</name>
+  </department>
+  <department>
+    <id>4</id>
+    <name>Personnel/HR department</name>
+  </department>
+</Company>

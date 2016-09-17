@@ -1,0 +1,72 @@
+package Ex7_2;
+
+public class Employee {
+	private int id;
+	private String name;
+	private String sex;
+	private String birthday;
+	private double salary;
+	private String address;
+	private String id_Department;
+	public Employee(int id, String name, String sex, String birthday,
+			double salary, String address, String id_Department) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.salary = salary;
+		this.address = address;
+		this.id_Department = id_Department;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getId_Department() {
+		return id_Department;
+	}
+	public void setId_Department(String id_Department) {
+		this.id_Department = id_Department;
+	}
+	
+	@Override
+	public String toString() {
+		return this.id + "\t" + this.name + "\tDepartment: " + this.id_Department 
+				+ "\tSex: " + this.sex + "\tBirthday: " + this.birthday
+				+ "\tSalary: " + this.salary + "\tAddress: " + this.address;
+	}
+	
+}

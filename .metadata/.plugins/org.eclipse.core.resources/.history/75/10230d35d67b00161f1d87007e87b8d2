@@ -1,0 +1,46 @@
+package Ex7_2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ManageEmployee {
+	public List<Employee> listEmp;
+	public List<Department> listDep;
+	
+	public ManageEmployee(){
+		this.listEmp = new ArrayList<Employee>();
+		this.listDep = new ArrayList<Department>();
+	}
+	
+	// add Employee
+	public void addEmp(Employee emp) {
+		this.listEmp.add(emp);
+	}
+	
+	// add Department
+	public void addDep(Department dep) {
+		this.listDep.add(dep);
+	}
+	
+	// show information of Department
+	public int showInfoDep() {
+		int count = 0;
+		for (int i = 0; i < listDep.size(); i++) {
+			count++;
+			System.out.println((i + 1) +". " + listDep.get(i).getName());
+		}
+		return count+1;
+	}
+	
+	// show information of employee drug Department
+	public void showInfoEmp() {
+		for (int i = 0; i < listDep.size(); i++) {
+			for (int j = 0; j < listEmp.size(); j++) {
+				if (listDep.get(i).getId() == listEmp.get(i).getId_Department())
+					System.out.println(listEmp.get(i).toString());
+			}
+		}
+	}
+	
+	
+}

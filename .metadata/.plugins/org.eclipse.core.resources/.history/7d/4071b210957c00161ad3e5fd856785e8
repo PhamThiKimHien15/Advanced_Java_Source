@@ -1,0 +1,67 @@
+package Ex8_2;
+
+import java.awt.HeadlessException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
+
+public class Main {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		UserController userController = new UserController();
+		User user = null;
+		try {
+			int ans = 1;
+			while (ans != 7) {
+				while (true) {
+					System.out.println("1. Login");
+					System.out.println("2. Add User");
+					System.out.println("3. Add Product");
+					System.out.println("4. Search Product");
+					System.out.println("5. Update Product");
+					System.out.println("6. Delete Product");
+					System.out.println("7. Exit");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >= 1 && ans <= 7)
+						break;
+				}
+				
+				switch (ans) {
+				case 1:
+					login(userController, user);
+					break;
+				case 2:
+					
+					break;
+				case 3:
+					
+					break;
+				case 4:
+					
+					break;
+				case 5:
+					
+					break;
+				case 6:
+					
+					break;
+				}				
+			}			
+		} catch (ClassNotFoundException | HeadlessException | IOException | NumberFormatException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	private static void login(UserController userController, User user) throws IOException, ClassNotFoundException {
+		System.out.println("Enter username: ");
+		String username = input.readLine();
+		System.out.println("Enter password: ");
+		String password = input.readLine();
+		user = userController.loginUser(username, password);
+		if(user == null){
+			System.out.println("Invalid Username or Password");
+		}else{
+			System.out.println("Welcome to our Store");
+		}
+	}
+}

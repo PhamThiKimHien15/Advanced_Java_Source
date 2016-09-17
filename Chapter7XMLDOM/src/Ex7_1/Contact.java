@@ -1,5 +1,9 @@
 package Ex7_1;
-
+/*
+ * author: Pham Thi Kim Hien
+ * Date: 15/9/2016
+ * Version: 1.0
+*/
 public class Contact {
 	private String name;
 	private String phone;
@@ -24,6 +28,14 @@ public class Contact {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	// use to check name, number phone and It is used in ListContact class
+	@Override
+	public boolean equals(Object obj) {
+		Contact co = (Contact) obj;
+		if (this.name.equals(co.name) || this.phone.equals(co.phone))
+			return true;
+		return false;
 	}
 	@Override
 	public String toString() {

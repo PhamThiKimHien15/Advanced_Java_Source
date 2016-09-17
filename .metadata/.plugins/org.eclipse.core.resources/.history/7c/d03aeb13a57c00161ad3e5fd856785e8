@@ -1,0 +1,27 @@
+package Ex8_2;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ProductController {
+	Database db = new Database();
+	
+	// add product
+	public void addProduct(Product pro) {
+		try (Connection conn = db.connect()){
+			String sql = "INSERT INTO product values (NULL, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement prestmt = conn.prepareStatement(sql);
+			prestmt.setString(1, pro.getName());
+			prestmt.setString(2, String.valueOf(pro.getPrice()));
+			prestmt.setString(3, String.valueOf(pro.getAmount()));
+			prestmt.setString(4, pro.getImage());
+			prestmt.setString(5, String.valueOf(pro.getCategoryId()));
+			prestmt.setString(6, String.valueOf(pro.getCreateDate()));
+			prestmt.setString(7, String.valueOf(pro.getOnSell()));
+			prestmt.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}
