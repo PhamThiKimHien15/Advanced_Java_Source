@@ -6,15 +6,15 @@ package Ex2_4;
  * Version : 1.0
  * Class about information Cat
  */
-public class Dog {
+public class Cat {
 
 	String name;
 
-	public Dog() {
+	public Cat() {
 		super();
 	}
 
-	public Dog(String name) {
+	public Cat(String name) {
 		super();
 		this.name = name;
 	}

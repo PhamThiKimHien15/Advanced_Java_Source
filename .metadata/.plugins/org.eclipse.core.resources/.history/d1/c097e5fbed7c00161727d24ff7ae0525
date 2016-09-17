@@ -2,19 +2,20 @@ package Ex2_4;
 
 /*
  * author: Pham Thi Kim Hien
- * Date : 7/9/2016
  * Version : 1.0
+ * Date : 7/9/2016
  * Class about information Cat
  */
-public class Dog {
+
+public class Cat {
 
 	String name;
 
-	public Dog() {
+	public Cat() {
 		super();
 	}
 
-	public Dog(String name) {
+	public Cat(String name) {
 		super();
 		this.name = name;
 	}

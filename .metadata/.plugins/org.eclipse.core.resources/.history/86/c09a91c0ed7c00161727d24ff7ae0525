@@ -1,10 +1,10 @@
-package Ex2_4;
+package ManagementPet;
 
 /*
- * author: Pham Thi Kim Hien
- * Date : 7/9/2016
+ * Nguyen Hoang Phu Tien
  * Version : 1.0
- * Class about information Cat
+ * Date : 7/9/2016
+ * Class about information Dog
  */
 public class Dog {
 
