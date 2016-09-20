@@ -1,0 +1,60 @@
+package ManageCD.UnitTest;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+public class TestSearchCDBySinger {
+	CDController cdController = new CDController();
+
+	@Test
+	public void testSearchCDBySinger1() {
+		List<CD> list = cdController.searchCDBySinger("trinh");
+		
+		List<CD> list1 = new ArrayList<CD>();
+		list1.add(new CD(2, "Em dung quay ve day", "Trinh Thang Binh", 11, 250000d));
+		list1.add(new CD(7, "Co anh o day roi", "Trinh Quang Minh", 6, 160000d));
+		
+		boolean ac = true;
+		if (list.size() == list1.size()){
+			for (int i = 0; i < list.size(); i++) {
+				if(!list.get(i).equals(list1.get(i))){
+					ac = false;
+					break;
+				}
+			}
+		}else{
+			ac = false;
+		}		
+		assertTrue(ac);
+	}
+	
+	@Test
+	public void testSearchCDBySinger2() {
+		List<CD> list = cdController.searchCDBySinger(" quang");
+		
+		List<CD> list1 = new ArrayList<CD>();
+		list1.add(new CD(2, "Em dung quay ve day", "Trinh Thang Binh", 11, 250000d));
+		list1.add(new CD(7, "Co anh o day roi", "Trinh Quang Minh", 6, 160000d));
+		
+		boolean ac = true;
+		if (list.size() == list1.size()){
+			for (int i = 0; i < list.size(); i++) {
+				if(!list.get(i).equals(list1.get(i))){
+					ac = false;
+					break;
+				}
+			}
+		}else{
+			ac = false;
+		}		
+		assertFalse(ac);
+	}
+
+}

@@ -1,0 +1,89 @@
+package ManageCD.TXTFile;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class MainCD {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) throws IOException {
+		
+		// get data from database to the list
+		CDController cdController = new CDController();
+		List<CD> list = cdController.getAllCD();
+		
+		// Write CD list into cd.txt file 
+		System.out.println("---- Write CD list into cd.txt file -----");
+		writeCD(list);
+		
+		// Show information of cd.txt file
+		System.out.println("\n\n---- Show information of cd.txt file-----");
+		readCD();
+		
+	}
+	
+	// Write CD list into cd.txt file 
+	private static void readCD() throws IOException {
+		ObjectInputStream in = null;
+		FileInputStream fis = new FileInputStream("src/ManageCD/TXTFile/cd.txt");
+		if (fis.available() != 0){
+			try {
+				in = new ObjectInputStream(fis);
+				while (true) {
+					CD cd = (CD) in.readObject();
+					System.out.println(cd.toString());
+				}
+			} catch (IOException | ClassNotFoundException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+				
+	}
+	
+	// Show information of cd.txt file
+	private static void writeCD(List<CD> list) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/ManageCD/TXTFile/cd.txt")))) {
+			for (CD cd : list) {
+				out.writeObject(cd);
+			}			
+			out.close();
+			System.out.println("CD has been written");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}	
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

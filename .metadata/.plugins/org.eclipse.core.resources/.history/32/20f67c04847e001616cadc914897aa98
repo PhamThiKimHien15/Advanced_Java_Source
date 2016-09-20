@@ -1,0 +1,98 @@
+package Stream;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.DoubleSummaryStatistics;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class MainEmployee {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		// create a Employee list
+		List<Employee> list = Arrays.asList(new Employee("Le Phuong Thanh", 22, 15000000d),
+				new Employee("Nguyen Lan Phuong", 20, 12000000d),
+				new Employee("Huynh Tan Hoa", 25, 18000000d),
+				new Employee("Tran Ngoc Dan", 26, 14000000d),
+				new Employee("Tran Thanh", 28, 25000000d),
+				new Employee("Le Van Tam", 23, 4000000d),
+				new Employee("Nguyen Ngoc Thu", 26, 5000000d),
+				new Employee("Doan Thanh Trang", 33, 16000000d),
+				new Employee("Nguyen Ngoc Chinh", 23, 8000000d),
+				new Employee("Nguyen Tinh Anh", 23, 19000000d),
+				new Employee("Pham Quynh Anh", 32, 2800000d),
+				new Employee("Tran The Luc", 35, 26000000d),
+				new Employee("Duong Anh Nguyet", 29, 250000d));
+		try {
+			int ans = 1;
+			while (ans != 6){
+				while (true) {
+					System.out.println("1. Show information of Employee");
+					System.out.println("2. Show employee list have salary greater than 3000000");
+					System.out.println("3. Show list name employee that have the word \"Anh\"");
+					System.out.println("4. The average age of employee");
+					System.out.println("5. Statistic employee");
+					System.out.println("6. Exit");
+					System.out.print("Choose: ");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >= 1 && ans <= 6)
+						break;
+				}
+				
+				switch (ans) {
+				case 1:
+					// Show information of Employee
+					System.out.println("------------Infomation of Employee----------");
+					System.out.println("\t" + String.format("%-20s%8s%15s", "Name", "Age", "Salary"));
+					list.forEach(e -> System.out.println(e.toString()));
+					break;
+				case 2:
+					// Show employee list have salary greater than 3000000
+					System.out.println("---- Employee have salary greater than 3000000----------");
+					int count = (int) list.stream().filter(e -> e.salary > 3000000).count();
+					System.out.println("Count: " + count + " employee");
+					List<Employee> listSalary = list.stream().filter(e -> e.getSalary() > 3000000).collect(Collectors.toList());
+					System.out.println("\t" + String.format("%-20s%8s%15s", "Name", "Age", "Salary"));
+					listSalary.forEach(System.out::println);					
+					break;
+				case 3:
+					// Show list name employee that have the word "Anh"
+					System.out.println("----- Name employee that have the word \"Anh\"");
+					List<Employee> listSearch = list.stream().filter(e -> e.getName().contains("Anh")).collect(Collectors.toList());
+					if(listSearch.size() > 0){
+						System.out.println("\t" + String.format("%-20s%8s%15s", "Name", "Age", "Salary"));
+						listSearch.forEach(System.out::println);
+					}
+					else
+						System.out.println("\tNot found");
+					break;
+				case 4: 
+					// The average age of employee
+					IntSummaryStatistics statistics = list.stream().mapToInt(e -> e.getAge()).summaryStatistics();
+					System.out.println("\tThe average age of employee: " + (statistics.getSum() / list.size()) + " age");
+					break;
+				case 5:
+					// Statistic employee: highest salary, lowest salary, average salary
+					DoubleSummaryStatistics statistics2 = list.stream().mapToDouble(e -> e.getSalary()).summaryStatistics();
+					System.out.println("----------Statistic----------------");
+					System.out.println("\tthe highest salary: " + statistics2.getMax() + " vnd");
+					System.out.println("\tthe lowest  salary: " + statistics2.getMin() + " vnd");
+					System.out.println("\tThe average salary: " + String.format("%.2f", statistics2.getSum() / list.size()) + " vnd");
+					break;				
+				}				
+			}
+		} catch (NumberFormatException | IOException e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+}

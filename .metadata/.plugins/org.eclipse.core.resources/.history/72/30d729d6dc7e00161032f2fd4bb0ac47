@@ -1,0 +1,14 @@
+package ManageCD.UnitTest;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestUpdateCD {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

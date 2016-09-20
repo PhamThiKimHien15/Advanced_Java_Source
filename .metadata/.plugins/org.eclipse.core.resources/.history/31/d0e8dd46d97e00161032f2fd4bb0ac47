@@ -1,0 +1,26 @@
+package ManageCD.UnitTest;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+public class TestSearchCDBySinger {
+	CDController cdController = new CDController();
+
+	@Test
+	public void test() {
+		List<CD> list = cdController.searchCDBySinger("trinh");
+		
+		List<CD> list1 = new ArrayList<CD>();
+		list1.add(new CD(2, "Em dung quay ve day", "Trinh Thang Binh", 11, 250000d));
+		
+		
+	}
+
+}

@@ -1,0 +1,25 @@
+package SortStringList;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class MainSortStringList {
+	public static void main(String[] args) {
+		List<String> list = Arrays.asList("Nguyen Van A", "Tran Nghia", "Le Phuong Thanh", "Lan Phuong", "Huynh Tan Hoa", "Tran Ngoc Dan");
+		System.out.println("-----------------String List----------------");
+		list.forEach(i -> System.out.println(i + " "));
+		
+		
+		Collections.sort(list, (String s1, String s2) -> s1.length() - s2.length());
+		list.forEach(i -> System.out.println(i + " "));
+		
+		
+		
+		
+		Collections.sort(list);
+		list.forEach( e -> System.out.println(e));
+		
+		
+	}
+}

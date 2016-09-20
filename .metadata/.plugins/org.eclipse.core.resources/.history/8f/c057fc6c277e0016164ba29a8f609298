@@ -1,0 +1,49 @@
+package ManageCD.JDBC;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class CDController {
+	Database db = new Database();
+	
+	// add cd
+		public void addCD(CD cd) {
+			try (Connection conn = db.connect()){
+				String sql = "INSERT INTO product values (NULL, ?, ?, ?, ?)";
+				PreparedStatement prestmt = conn.prepareStatement(sql);
+				prestmt.setString(1, cd.getName());
+				prestmt.setString(2, cd.getSinger());
+				prestmt.setString(3, String.valueOf(cd.getNumbersongs()));
+				prestmt.setString(4, String.valueOf(cd.getPrice()));
+				prestmt.execute();
+			} catch (ClassNotFoundException | SQLException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

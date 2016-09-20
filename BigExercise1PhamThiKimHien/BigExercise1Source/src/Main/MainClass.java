@@ -15,7 +15,10 @@ import Score.ScoreSubject;
  * author: Pham Thi Kim Hien
  * date: 06/09/2016
  * version: 1.0
- * 
+ * Description: use to show the list of functions that support program, 
+ *  users choose a number that each number corresponds to a function has been mentioned below. 
+ *  That function will perform.
+ *  The program will end when the user chooses "Exit".
  */
 public class MainClass {
 	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -200,8 +203,10 @@ public class MainClass {
 					}
 				}
 				
-				// Entry score final for students
-				// This information is shown when students fully meet the score column
+				/*
+				 *  Entry score final for students
+				 *  This information is shown when students fully meet the score column
+				 */
 				else if (choose == 5){
 					while (true){
 						list.showNameClass();
@@ -278,8 +283,10 @@ public class MainClass {
 						System.out.println("Choose name Class: ");
 						int nameClass = Integer.parseInt(input.readLine());
 						if (nameClass == 1){
-							// Print information of students in each subject
-							// First subject
+							/*
+							 *  Print information of students in each subject
+							 *  First subject
+							 */
 							System.out.println("== "+sub.getName()  + "==========");
 							cls1.showInfoOfFistSubject();
 							// Second subject
@@ -288,8 +295,10 @@ public class MainClass {
 							break;
 						}					
 						else if (nameClass == 2){
-							//Print information of students in each subject 
-							//First subject
+							/*
+							 * Print information of students in each subject 
+							 * First subject
+							 */
 							System.out.println("=========="+sub.getName() + "==========");
 							cls2.showInfoOfFistSubject();
 							// Second subject
@@ -299,8 +308,7 @@ public class MainClass {
 						}
 						else if (nameClass == 3)
 							break;
-					}
-					
+					}					
 				}
 				else if (choose == 7)
 					break;		

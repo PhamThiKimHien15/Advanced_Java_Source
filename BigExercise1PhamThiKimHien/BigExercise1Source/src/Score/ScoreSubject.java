@@ -67,6 +67,7 @@ public class ScoreSubject {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	
 	// function: calculate score total person of a subject
 	public double calTotalPerson() {
 		double sum = 0;
@@ -80,6 +81,7 @@ public class ScoreSubject {
 		return this.calTotalPerson()*0.3 + this.scoreTheory*0.4 + this.scorePractice*0.3;
 	}
 	
+	// show information score subject
 	public void showInfo(){
 		if (this.getScoreTheory() > 0 && this.getScorePractice() > 0 && calTotalPerson() > 0){
 			System.out.println("\t----Name: " + this.getStudent().getName()

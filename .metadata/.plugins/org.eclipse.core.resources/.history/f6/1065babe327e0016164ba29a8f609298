@@ -1,0 +1,80 @@
+package ManageCD.TXTFile;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import Ex6_4.Employee;
+import Ex6_4.ListEmployee;
+import ManageCD.JDBC.CDController;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class MainCD {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		CDController list = new CDController();
+		CD cd = new CD();
+		writeCD(cd);
+		
+	}
+	
+	private static void readCD(ListEmployee list, Employee employee) throws ClassNotFoundException {
+		try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/Ex6_4/employee.txt")))){
+			while (true) {
+				Employee emp = (Employee) in.readObject();
+				list.addEmployee(emp);
+			}
+		} catch (IOException | ClassNotFoundException e) {
+			System.err.println(e.getMessage());
+		}		
+	}
+	
+	private static void writeCD(CD cd) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/ManageCD/TXTFile/cd.txt", false)))) {
+			System.out.println("enter full name of the employee: ");
+			name = input.readLine();
+			System.out.println("Enter the employee's salary coefficient ");
+			ceoSalary = Double.parseDouble(input.readLine());
+			System.out.println("Enter the number of family allowances: ");
+			numOfPeople = Integer.parseInt(input.readLine());
+			System.out.println("Enter subsidies: ");
+			subsidize = Double.parseDouble(input.readLine());
+			employee = new Employee(name, ceoSalary, numOfPeople, subsidize);
+			out.writeObject(employee);
+			out.close();
+			System.out.println("Employee has been written");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

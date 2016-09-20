@@ -1,0 +1,17 @@
+package ManageCD.TXTFile;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class MainCD {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		
+	}
+}

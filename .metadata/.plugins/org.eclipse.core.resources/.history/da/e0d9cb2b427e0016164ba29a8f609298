@@ -1,0 +1,5 @@
+package SortStringList;
+
+public interface LengthString {
+	public boolean length;
+}

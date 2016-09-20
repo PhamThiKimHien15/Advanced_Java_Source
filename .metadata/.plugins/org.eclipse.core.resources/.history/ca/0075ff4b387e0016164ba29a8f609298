@@ -1,0 +1,113 @@
+package ManageCD.XMLFile;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+public class MainXML {
+	public static void main(String[] args) {
+		// get data from database to the list
+		CDController cdController = new CDController();
+		List<CD> list = cdController.getAllCD();
+		
+		// Write CD list into cd.xml file 
+		System.out.println("---- Write CD list into cd.xml file -----");
+		createFile(list);
+		
+		// Show information of cd.txt file
+		System.out.println("\n\n---- Show information of cd.txt file-----");
+		readCD();
+	}
+	
+	// create and write into cd.xml file
+	private static void createFile(List<CD> list) {
+		// existing file
+		Path path = Paths.get("src/Ex7_1/contact.xml");
+		if(!Files.exists(path)){
+			File file = new File("src/Ex7_1/contact.xml");
+		}
+		
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("contacts");
+			doc.appendChild(rootElement);
+			
+			List<Contact> list1 = list.list;
+			for (int i = 0; i < list1.size(); i++) {
+				Contact c = list1.get(i);
+				// contact
+				Element contact = doc.createElement("contact");
+				rootElement.appendChild(contact);
+				
+				// name contact
+				Element name = doc.createElement("name");
+				name.appendChild(doc.createTextNode(c.getName()));
+				contact.appendChild(name);
+				
+				// phone contact
+				Element phone = doc.createElement("phone");
+				phone.appendChild(doc.createTextNode(c.getPhone()));
+				contact.appendChild(phone);
+			}	
+			
+			// write the content into xml file			
+			TransformerFactory tranformer = TransformerFactory.newInstance();
+			Transformer tf = tranformer.newTransformer();
+			
+			// structure xml file (down line)
+			tf.setOutputProperty(OutputKeys.INDENT, "yes");
+			tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("src/Ex7_1/contact.xml"));
+			tf.transform(source, result);			
+		} catch (ParserConfigurationException | TransformerException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

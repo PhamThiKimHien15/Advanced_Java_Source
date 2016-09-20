@@ -1,0 +1,187 @@
+package ManageCD.JDBC;
+
+import java.awt.HeadlessException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import AllExercise8.Category;
+import AllExercise8.CategoryController;
+import AllExercise8.Product;
+import AllExercise8.ProductController;
+import AllExercise8.User;
+import AllExercise8.UserController;
+
+public class MainCD {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+		CDController cdController = new CDController();
+		CD cd = null;
+		try {
+			int ans = 1;
+			while (ans != 5) {
+				while (true) {
+					System.out.println("1. Add CD");
+					System.out.println("2. Search CD");
+					System.out.println("3. Update CD");
+					System.out.println("4. Delete CD");
+					System.out.println("5. Exit");
+					ans = Integer.parseInt(input.readLine());
+					if (ans >= 1 && ans <= 5)
+						break;
+				}
+				
+				switch (ans) {
+				case 1:
+					// Add CD
+					System.out.println("Enter name(*): ");
+					String name = input.readLine();
+					System.out.println("Enter singer(*): ");
+					String singer = input.readLine();				
+					System.out.println("Enter numbersongs(*): ");
+					int numbersongs = Integer.parseInt(input.readLine());
+					System.out.println("Enter price(*): ");
+					double price = Double.parseDouble(input.readLine());						
+					if (!name.equals("") && !singer.equals("")){
+						cd = new CD(name, singer, numbersongs, price);
+						cdController.addCD(cd);
+						System.out.println("success");
+					}					
+					break;
+				case 2:
+					// Search CD
+					System.out.println("Enter name need search: ");
+					String name = input.readLine();
+					List<CD> listCD = cdController.searchCD(name);
+					if(listCD.size() > 0){
+						System.out.println("=======Result search========");
+						for (CD cd2 : listCD) {
+							System.out.println(cd2.toString());
+						}			
+					}else{
+						System.out.println("Cannot find CD");
+					}
+					break;
+				case 5:
+					// Update Product
+					System.out.println("=======Product=========");
+					int idProduct = showInfoProduct(productController, product);
+					
+					System.out.println("Enter price need update: ");
+					double priceUpdate = Double.parseDouble(input.readLine());
+					System.out.println("Enter amount need update: ");
+					int amountUpdate = Integer.parseInt(input.readLine());
+					product = new Product(idProduct, priceUpdate, amountUpdate);
+					productController.updateProduct(product);
+					System.out.println("update success");
+					break;
+				case 6:
+					//  Delete Product
+					System.out.println("=======Product=========");
+					int idPro = showInfoProduct(productController, product);
+					String anss;
+					while(true){
+						System.out.println("Are you sure want to delete?(Y/N): ");
+						anss = input.readLine();
+						if (anss.equalsIgnoreCase("Y") || anss.equalsIgnoreCase("N")){
+							if (anss.equalsIgnoreCase("Y")){
+								productController.deleteProduct(idPro);
+								System.out.println("delete success");
+							}
+							break;
+						}
+					}					
+					break;
+				}				
+			}			
+		} catch (ClassNotFoundException | HeadlessException | IOException | NumberFormatException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	// show information of all product
+	private static int showInfoProduct(ProductController productController,
+			Product product) throws NumberFormatException, IOException {
+		List<Product> list = productController.getAllProduct();
+		for (Product pro : list) {
+			System.out.println(pro.toString());
+		}
+		/*
+		 *  users have selected the a product, 
+		 *  then start checking view users has selected the correct product by id, 
+		 *  if true, the end of the loop, 
+		 *  if the wrong is for the user to choose again.
+		 */
+		int chooseProduct;
+		while(true){
+			System.out.println("Choose: ");
+			chooseProduct = Integer.parseInt(input.readLine());
+			int result = 0;
+			for (Product pro2 : list) {
+				if (pro2.getId() == chooseProduct){
+					result = 1;
+					break;
+				}
+			}
+			if (result == 1)
+				break;
+		}	
+		return chooseProduct;
+	}
+
+
+	// add product
+	private static void addProducts(CategoryController categoryController,
+			ProductController productController, Category category,
+			Product product) throws NumberFormatException, IOException {
+		
+		ArrayList<Category> listCategory = categoryController.getCategory();
+		int categoryId;
+		while (true) {
+			// show information of category list
+			for (int i = 0; i < listCategory.size(); i++) {
+				System.out.println(listCategory.get(i).getId() + ". " + listCategory.get(i).getName());
+			}
+			/*
+			 *  users have selected the a category, 
+			 *  then start checking view users has selected the correct category by id, 
+			 *  if true, the end of the loop, 
+			 *  if the wrong is for the user to choose again.
+			 */
+			System.out.println("Choose: ");
+			categoryId = Integer.parseInt(input.readLine());
+			int result = 0;
+			for (Category cate : listCategory) {
+				if (cate.getId() == categoryId){
+					result = 1;
+					break;
+				}
+			}
+			if (result == 1)
+				break;
+		}
+		// enter formation of product
+		System.out.println("Enter name(*): ");
+		String name = input.readLine();
+		System.out.println("Enter price(*): ");
+		double price = Double.parseDouble(input.readLine());
+		System.out.println("Enter amount(*): ");
+		int amount = Integer.parseInt(input.readLine());
+		System.out.println("Enter image: ");
+		String image = input.readLine();
+		System.out.println("Enter onSell(*): ");
+		int onSell = Integer.parseInt(input.readLine());
+		
+		product = new Product(name, price, amount, image, categoryId, date, onSell);
+		if (name != null){
+			productController.addProduct(product);
+			System.out.println("success");
+		}else{
+			System.out.println("name not empty");
+		}
+	}
+	
+}

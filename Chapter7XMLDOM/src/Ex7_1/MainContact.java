@@ -202,7 +202,7 @@ public class MainContact {
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				list.addContact(getContact(nodeList.item(i)));
-//				System.out.println(nodeList.item(i).getNodeName());
+				System.out.println(nodeList.item(i).getNodeName());
 			}			
 			
 		} catch (SAXException | IOException | ParserConfigurationException e) {

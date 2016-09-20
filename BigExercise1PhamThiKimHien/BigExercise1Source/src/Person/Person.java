@@ -4,7 +4,7 @@ package Person;
  * author: Pham Thi Kim Hien
  * date: 06/09/2016
  * version: 1.0
- * 
+ * Description: use to provide general information for Student class and Teacher class
  */
 public class Person {
 	private String name;

@@ -1,0 +1,58 @@
+package ManageCD.UnitTest;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+public class TestSearchCDByPrice {
+	CDController cdController = new CDController();
+	
+	@Test
+	public void testSearchCDByPrice1() {
+		List<CD> list = cdController.searchCDByPrice(0, 100000);
+		
+		List<CD> list1 = new ArrayList<CD>();
+		list1.add(new CD(8, "Bon chu lam", "Van Mai Huong", 5, 80000d));
+		
+		boolean ac = true;
+		if (list.size() == list1.size()){
+			for (int i = 0; i < list.size(); i++) {
+				if(!list.get(i).equals(list1.get(i))){
+					ac = false;
+					break;
+				}
+			}
+		}else{
+			ac = false;
+		}		
+		assertTrue(ac);
+	}
+	
+	@Test
+	public void testSearchCDByPrice2() {
+		List<CD> list = cdController.searchCDByPrice(100000, 200000);
+		
+		List<CD> list1 = new ArrayList<CD>();
+		list1.add(new CD(8, "Bon chu lam", "Van Mai Huong", 5, 80000d));
+		
+		boolean ac = true;
+		if (list.size() == list1.size()){
+			for (int i = 0; i < list.size(); i++) {
+				if(!list.get(i).equals(list1.get(i))){
+					ac = false;
+					break;
+				}
+			}
+		}else{
+			ac = false;
+		}		
+		assertFalse(ac);
+	}
+
+}

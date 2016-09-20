@@ -1,0 +1,20 @@
+package ManageCD.TXTFile;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class ManageCD {
+	public List<CD> list;
+	
+	public ManageCD(){
+		this.list = new ArrayList<CD>();
+	}
+	
+	
+}

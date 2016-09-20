@@ -4,7 +4,7 @@ package Person;
  * author: Pham Thi Kim Hien
  * date: 06/09/2016
  * version: 1.0
- * 
+ * description: use to create information of Student
  */
 public class Student extends Person {
 	private String birthday;

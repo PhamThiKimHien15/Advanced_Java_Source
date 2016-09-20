@@ -9,7 +9,7 @@ import Score.ScoreSubject;
  * author: Pham Thi Kim Hien
  * date: 06/09/2016
  * version: 1.0
- * 
+ * description: use to manage information of class
  */
 public class Class extends Information {
 	private int numberContract;

@@ -1,0 +1,181 @@
+package ManageCD.XMLFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import ManageCD.JDBC.CD;
+import ManageCD.JDBC.CDController;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: use to read and write cd.xml file
+ */
+public class MainXML {
+	public static void main(String[] args) throws ParserConfigurationException, TransformerException, SAXException, IOException {
+		// get data from database to the list
+		CDController cdController = new CDController();
+		List<CD> list = cdController.getAllCD();
+		
+		// Write CD list into cd.xml file 
+		System.out.println("---- Write CD list into cd.xml file -----");
+		createFile(list);
+		
+		// Show information of cd.xml file
+		System.out.println("\n\n---- Show information of cd.xml file-----");
+		readFile();
+		
+	}
+	
+	// create and write into cd.xml file
+	private static void createFile(List<CD> list) {
+		// existing file
+		Path path = Paths.get("src/ManageCD/XMLFile/cd.xml");
+		if(!Files.exists(path)){
+			File file = new File("src/ManageCD/XMLFile/cd.xml");
+		}
+		
+		try {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("CDs");
+			doc.appendChild(rootElement);
+			
+			for (int i = 0; i < list.size(); i++) {
+				CD c = list.get(i);
+				// CD
+				Element cd = doc.createElement("CD");
+				rootElement.appendChild(cd);
+				
+				// id CD
+				Element id = doc.createElement("id");
+				id.appendChild(doc.createTextNode(String.valueOf(c.getId())));
+				cd.appendChild(id);
+				
+				// name CD
+				Element name = doc.createElement("name");
+				name.appendChild(doc.createTextNode(c.getName()));
+				cd.appendChild(name);
+				
+				// singer CD
+				Element singer = doc.createElement("singer");
+				singer.appendChild(doc.createTextNode(c.getSinger()));
+				cd.appendChild(singer);
+				
+				// number songs CD
+				Element numbersongs = doc.createElement("numbersongs");
+				numbersongs.appendChild(doc.createTextNode(String.valueOf(c.getNumbersongs())));
+				cd.appendChild(numbersongs);
+				
+				// price CD
+				Element price = doc.createElement("price");
+				price.appendChild(doc.createTextNode(String.valueOf(c.getPrice())));
+				cd.appendChild(price);
+			}	
+			
+			// write the content into xml file			
+			TransformerFactory tranformer = TransformerFactory.newInstance();
+			Transformer tf = tranformer.newTransformer();
+			
+			// structure of xml file (down line)
+			tf.setOutputProperty(OutputKeys.INDENT, "yes");
+			tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("src/ManageCD/XMLFile/cd.xml"));
+			tf.transform(source, result);	
+			System.out.println("CD has been written");
+		} catch (ParserConfigurationException | TransformerException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	
+	// get formation of a node into a contact
+	public static CD getCD(Node node) {
+		CD cd= new CD();
+		if (node.getNodeType() == node.ELEMENT_NODE){
+			Element element = (Element) node;
+			int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+			String name = element.getElementsByTagName("name").item(0).getTextContent();
+			String singer = element.getElementsByTagName("singer").item(0).getTextContent();
+			int numbersongs = Integer.parseInt(element.getElementsByTagName("numbersongs").item(0).getTextContent());
+			double price = Double.parseDouble(element.getElementsByTagName("price").item(0).getTextContent());
+			cd = new CD(id, name, singer, numbersongs, price);
+		}			
+		return cd;		
+	}		
+		
+	// access file, open file, read and display result
+	public static void readFile() {
+		File xmlFile = new File("src/ManageCD/XMLFile/cd.xml");
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder;
+		try {
+			dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(xmlFile);
+			doc.getDocumentElement().normalize();
+			doc.getDocumentElement().getNodeName();
+			NodeList nodeList = doc.getElementsByTagName("CD");
+			List<CD> list = new ArrayList<CD>();
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				list.add(getCD(nodeList.item(i)));
+			}			
+			for (CD cd : list) {
+				System.out.println(cd.toString());
+			}
+			
+		} catch (SAXException | IOException | ParserConfigurationException e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

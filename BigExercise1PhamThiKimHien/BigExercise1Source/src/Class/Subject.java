@@ -5,7 +5,7 @@ import Person.Teacher;
  * author: Pham Thi Kim Hien
  * date: 06/09/2016
  * version: 1.0
- * 
+ * description: use to create information of Subject
  */
 public class Subject extends Information {
 	private Teacher teacher;

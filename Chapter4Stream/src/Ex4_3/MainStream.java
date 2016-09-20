@@ -19,6 +19,7 @@ public class MainStream {
 		list.forEach(i -> System.out.println(i.toString()));
 		
 		// count number student have age >= 18
+		
 		int count = (int) list.stream().filter((Student a) -> 18 <= a.age).count();
 		System.out.println("Number student have age >= 18: " + count);
 		

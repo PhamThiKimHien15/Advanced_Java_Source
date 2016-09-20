@@ -1,0 +1,133 @@
+package ManageCD.JDBC;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import AllExercise8.Product;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: 
+ */
+public class CDController {
+	Database db = new Database();
+
+	// add cd
+	public void addCD(CD cd) {
+		try (Connection conn = db.connect()) {
+			String sql = "INSERT INTO cd values (NULL, ?, ?, ?, ?)";
+			PreparedStatement prestmt = conn.prepareStatement(sql);
+			prestmt.setString(1, cd.getName());
+			prestmt.setString(2, cd.getSinger());
+			prestmt.setString(3, String.valueOf(cd.getNumbersongs()));
+			prestmt.setString(4, String.valueOf(cd.getPrice()));
+			prestmt.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	// search CD by name
+	public List<CD> searchCD(String name) {
+		List<CD> list = new ArrayList<CD>();
+		try (Connection conn = db.connect()){
+			Statement stmt = conn.createStatement();
+			String sql = "SELECT * FROM cd WHERE name like '%"+ name + "%'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()){
+				CD cd = new CD(Integer.parseInt(rs.getString("id")), rs.getString("name"), 
+						rs.getString("singer"), Integer.parseInt(rs.getString("numbersongs")), 
+						Double.parseDouble(rs.getString("price")));				
+				list.add(cd);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return list;
+	}
+	
+	// get data from database to the list
+	public List<CD> getAllCD() {
+		List<CD> list = new ArrayList<CD>();
+		try (Connection conn = db.connect()){
+			Statement stmt = conn.createStatement();
+			String sql = "SELECT * FROM cd";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()){
+				CD cd = new CD(Integer.parseInt(rs.getString("id")), rs.getString("name"), 
+						rs.getString("singer"), Integer.parseInt(rs.getString("numbersongs")), 
+						Double.parseDouble(rs.getString("price")));				
+				list.add(cd);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return list;
+	}
+
+	// update CD
+	public void updateCD(CD cd) {
+		try (Connection conn = db.connect()){
+			String sql = "UPDATE cd set numbersongs=?, price=? WHERE id=?";
+					
+			PreparedStatement prestmt = conn.prepareStatement(sql);
+			prestmt.setString(1, String.valueOf(cd.getNumbersongs()));
+			prestmt.setString(2, String.valueOf(cd.getPrice()));
+			prestmt.setString(3, String.valueOf(cd.getId()));
+			prestmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	// delete CD
+	public void deleteCD(int id) {
+		try (Connection conn = db.connect()){
+			String sql ="DELETE FROM product WHERE id=?";
+			PreparedStatement prestmt = conn.prepareStatement(sql);
+			prestmt.setString(1, String.valueOf(id));
+			prestmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

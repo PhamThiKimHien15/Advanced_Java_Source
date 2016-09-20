@@ -1,0 +1,93 @@
+package ManageCD.JDBC;
+
+import java.io.Serializable;
+
+/*
+ * 	Author: Pham Thi Kim Hien
+ *	Date: 19/09/2016
+ *	Version: 1.0
+ *  Description: use to manage information of CD
+ */
+public class CD implements Serializable{
+	protected int id;
+	protected String name;
+	protected String singer;
+	protected int numbersongs;
+	protected double price;
+
+	public CD(int id, String name, String singer, int numbersongs, double price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.singer = singer;
+		this.numbersongs = numbersongs;
+		this.price = price;
+	}
+	
+	public CD(String name, String singer, int numbersongs, double price) {
+		super();
+		this.name = name;
+		this.singer = singer;
+		this.numbersongs = numbersongs;
+		this.price = price;
+	}
+	
+	public CD(int id, int numbersongs, double price) {
+		super();
+		this.id = id;
+		this.numbersongs = numbersongs;
+		this.price = price;
+	}
+	
+	public CD() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSinger() {
+		return singer;
+	}
+
+	public void setSinger(String singer) {
+		this.singer = singer;
+	}
+
+	public int getNumbersongs() {
+		return numbersongs;
+	}
+
+	public void setNumbersongs(int numbersongs) {
+		this.numbersongs = numbersongs;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+//      System.out.println(String.format("%3s%-20s%-20s%5s%10.2f", "ID", "Name", "Singer", "Number songs", "Price"));
+		return String.format("%-3s%-30s%-20s%11s%10.2f", this.id , this.name , this.singer, this.numbersongs, this.price);
+//		return "\t" + this.id + ". " + this.name + "\tSinger: " + this.singer
+//				+ "\tNumber Songs: " + this.numbersongs + "\tPrice: " + this.price;
+	}
+}

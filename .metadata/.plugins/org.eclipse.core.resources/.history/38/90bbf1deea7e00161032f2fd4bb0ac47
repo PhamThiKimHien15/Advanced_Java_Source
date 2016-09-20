@@ -1,0 +1,327 @@
+package Main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+import Class.Class;
+import Class.ClassManagement;
+import Class.Subject;
+import Person.Student;
+import Score.Attendance;
+import Score.ScoreSubject;
+/*
+ * author: Pham Thi Kim Hien
+ * date: 06/09/2016
+ * version: 1.0
+ * 
+ */
+public class MainClass {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	static double scoreAttendance;
+	static double scoreExercise;
+	static double scorePositive;
+	static double scoreTheory;
+	static double scorePractice;
+	static Attendance att;
+	public static void main(String[] args) {
+		try {
+			// class list management
+			ClassManagement list = new ClassManagement();
+			
+			// class list
+			Class cls1 =  new Class("GCS1_Fresher", "1/8/2016", "31/8/2016", 184, 1245);		
+			list.addclass(cls1);
+			Class cls2 =  new Class("GCS2_PHP", "1/8/2016", "31/8/2016", 184, 1452);		
+			list.addclass(cls2);
+			
+			// student list of class GCS1_Fresher
+			Student stu = new Student("Nguyen Van A", "nguyenvana@gmail.com", "01263654788", "12/08/2015");
+			cls1.addStudent(stu);
+			Student stu2 = new Student("Nguyen Van B", "nguyenvanb@gmail.com", "09875421862", "5/08/1985");
+			cls1.addStudent(stu2);
+			Student stu3 = new Student("Nguyen Van C", "nguyenvanc@gmail.com", "09085421811", "5/04/1998");
+			cls1.addStudent(stu3);
+			
+			// student list of class GCS2_Developer
+			Student stu4 = new Student("Nguyen Van Toan", "nguyenvantoan@gmail.com", "01263654788", "12/08/1958");
+			cls2.addStudent(stu4);
+			Student stu5 = new Student("Luu Van Toan", "luuvantoan@gmail.com", "09875421862", "12/6/1999");
+			cls2.addStudent(stu5);
+			Student stu6 = new Student("Dinh Thi Thao", "dinhthithao@gmail.com", "09085421811", "14/5/2000");
+			cls2.addStudent(stu6);
+			
+			// subject list of class GCS1_Fresher
+			Subject sub = new Subject("Linux", "12/08/2016", "31/08/2016", 120);
+			cls1.addSubject(sub);
+			Subject sub2 = new Subject("Java programming", "12/08/2016", "31/08/2016", 120);
+			cls1.addSubject(sub2);
+			
+			// subject list of class GCS2_Developer
+			Subject sub3 = new Subject("Basic PHP programming", "12/08/2016", "31/08/2016", 120);
+			cls2.addSubject(sub3);
+			Subject sub4 = new Subject("Advanced PHP programming", "12/08/2016", "31/08/2016", 120);
+			cls2.addSubject(sub4);
+			
+			// choose
+			int choose;
+			while (true) {
+				System.out.println("1.Show all class list");
+				System.out.println("2.Show student list of a class");
+				System.out.println("3.Show subject list of a class");
+				System.out.println("4.Attendance students of a class"); // score a lesson
+				System.out.println("5.Entry score final for students"); // score final
+				System.out.println("6.Show score of all students in a class");
+				System.out.println("7.Exit");			
+				while (true){
+					System.out.println("Choose: ");	
+					choose = Integer.parseInt(input.readLine());
+					if(choose >= 1 && choose <= 7)
+						break;
+				}
+				
+				// Show all class list
+				if (choose == 1){
+					list.showClass();
+				}
+				
+				// Show student list of a class
+				else if (choose == 2){	
+					while (true) {
+						list.showNameClass();
+						System.out.println("3.Exit");
+						System.out.println("Choose name class: ");
+						int name = Integer.parseInt(input.readLine());
+						if (name == 1){
+							cls1.showStudent();
+							break;
+						}					
+						else if (name == 2){
+							cls2.showStudent();
+							break;
+						}
+						else if (name == 3)
+							break;
+					}				
+				}
+				
+				// Show subject list of a class
+				else if (choose == 3){
+					while (true){
+						list.showNameClass();
+						System.out.println("3.Exit");
+						System.out.println("Choose name Class: ");
+						int nameClass = Integer.parseInt(input.readLine());
+						if (nameClass == 1){
+							cls1.showSubject();							
+							break;
+						}					
+						else if (nameClass == 2){
+							cls2.showSubject();
+							break;
+						}
+						else if (nameClass == 3)
+							break;
+					}
+				}
+				
+				// Attendance students of a class
+				else if (choose == 4){
+					while (true){
+						list.showNameClass();
+						System.out.println("3.Exit");
+						System.out.println("Choose name Class: ");
+						int nameClass = Integer.parseInt(input.readLine());
+						if (nameClass == 1){
+							int nameSubject;
+							while (true) {
+								cls1.showNameSubject();	
+								System.out.println("Choose subject: ");
+								nameSubject = Integer.parseInt(input.readLine());
+								if (nameSubject >= 0 && nameSubject <= cls1.getArraySubject().size())
+									break;
+							}							
+							for (int i = 0; i < cls1.getArrayStudent().size(); i++) {
+								System.out.println("--------" + cls1.getArrayStudent().get(i).getName() + "--------");								
+								System.out.println("Enter score Attendance: ");
+								scoreAttendance = Double.parseDouble(input.readLine());
+								System.out.println("Enter score Exercise: ");
+								scoreExercise = Double.parseDouble(input.readLine());
+								System.out.println("Enter score Positive: ");
+								scorePositive = Double.parseDouble(input.readLine());
+								if(nameSubject == 1){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(0, 0,cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls1.addScoreOfFirstSubject(sbj);
+								}
+								if(nameSubject == 2){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(0, 0,cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls1.addScoreOfSecondSubject(sbj);
+								}	
+							}														
+						}					
+						else if (nameClass == 2){
+							int nameSubject;
+							while (true) {
+								cls2.showNameSubject();	
+								System.out.println("Choose subject: ");
+								nameSubject = Integer.parseInt(input.readLine());
+								if (nameSubject >= 0 && nameSubject <= cls2.getArraySubject().size())
+									break;
+							}							
+							for (int i = 0; i < cls2.getArrayStudent().size(); i++) {
+								System.out.println("--------" + cls2.getArrayStudent().get(i).getName() + "--------");
+								System.out.println("Enter score Attendance: ");
+								scoreAttendance = Double.parseDouble(input.readLine());
+								System.out.println("Enter score Exercise: ");
+								scoreExercise = Double.parseDouble(input.readLine());
+								System.out.println("Enter score Positive: ");
+								scorePositive = Double.parseDouble(input.readLine());
+								if(nameSubject == 1){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(0, 0,cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls2.addScoreOfFirstSubject(sbj);
+								}
+								if(nameSubject == 2){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(0, 0,cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls2.addScoreOfSecondSubject(sbj);
+								}	
+							}
+						}
+						else if (nameClass == 3)
+							break;
+					}
+				}
+				
+				/*
+				 *  Entry score final for students
+				 *  This information is shown when students fully meet the score column
+				 */
+				else if (choose == 5){
+					while (true){
+						list.showNameClass();
+						System.out.println("3.Exit");
+						System.out.println("Choose name Class: ");
+						int nameClass = Integer.parseInt(input.readLine());
+						if (nameClass == 1){
+							int nameSubject;
+							while (true) {
+								cls1.showNameSubject();	
+								System.out.println("Choose subject: ");
+								nameSubject = Integer.parseInt(input.readLine());
+								if (nameSubject >= 0 && nameSubject <= cls1.getArraySubject().size())
+									break;
+							}							
+							for (int i = 0; i < cls1.getArrayStudent().size(); i++) {
+								System.out.println("--------" + cls1.getArrayStudent().get(i).getName() + "--------");								
+								System.out.println("Enter score theory: ");
+								scoreTheory = Double.parseDouble(input.readLine());
+								System.out.println("Enter score practice: ");
+								scorePractice = Double.parseDouble(input.readLine());
+								if(nameSubject == 1){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(scoreTheory, scorePractice,cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls1.addScoreOfFirstSubject(sbj);
+								}
+								if(nameSubject == 2){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(scoreTheory, scorePractice,cls1.getArraySubject().get(nameSubject-1).getName(), cls1.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls1.addScoreOfFirstSubject(sbj);
+								}	
+							}														
+						}					
+						else if (nameClass == 2){
+							int nameSubject;
+							while (true) {
+								cls2.showNameSubject();	
+								System.out.println("Choose subject: ");
+								nameSubject = Integer.parseInt(input.readLine());
+								if (nameSubject >= 0 && nameSubject <= cls2.getArraySubject().size())
+									break;
+							}							
+							for (int i = 0; i < cls2.getArrayStudent().size(); i++) {
+								System.out.println("--------" + cls2.getArrayStudent().get(i).getName() + "--------");
+								System.out.println("Enter score Theory: ");
+								scoreTheory = Double.parseDouble(input.readLine());
+								System.out.println("Enter score Practice: ");
+								scorePractice = Double.parseDouble(input.readLine());
+								if(nameSubject == 1){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(scoreTheory, scorePractice,cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls2.addScoreOfFirstSubject(sbj);
+								}
+								if(nameSubject == 2){
+									att = new Attendance(scoreAttendance, scoreExercise, scorePositive, cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									ScoreSubject sbj = new ScoreSubject(scoreTheory, scorePractice,cls2.getArraySubject().get(nameSubject-1).getName(), cls2.getArrayStudent().get(i).getName());
+									sbj.addAttendance(att);
+									cls2.addScoreOfSecondSubject(sbj);
+								}	
+							}
+						}
+						else if (nameClass == 3)
+							break;
+					}
+				}
+				// Show score of all students in a class
+				else if (choose == 6){
+					while (true){
+						list.showNameClass();
+						System.out.println("3.Exit");
+						System.out.println("Choose name Class: ");
+						int nameClass = Integer.parseInt(input.readLine());
+						if (nameClass == 1){
+							// Print information of students in each subject
+							// First subject
+							System.out.println("== "+sub.getName()  + "==========");
+							cls1.showInfoOfFistSubject();
+							// Second subject
+							System.out.println("== "+sub2.getName() + "==========");
+							cls1.showInfoOfSecondSubject();							
+							break;
+						}					
+						else if (nameClass == 2){
+							//Print information of students in each subject 
+							//First subject
+							System.out.println("=========="+sub.getName() + "==========");
+							cls2.showInfoOfFistSubject();
+							// Second subject
+							System.out.println("========== "+sub2.getName()+ "=========");
+							cls2.showInfoOfSecondSubject();;
+							break;
+						}
+						else if (nameClass == 3)
+							break;
+					}					
+				}
+				else if (choose == 7)
+					break;		
+				System.out.println("------------------------------------------------------------------------------");
+			}			
+		} catch (NumberFormatException | IOException | NullPointerException  e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
